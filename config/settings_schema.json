@@ -64,7 +64,14 @@
         "id": "color_palette",
         "default": {
           "background": "#ffffff",
-          "foreground": "#000000"
+          "foreground": "#000000",
+          "accent": "#CEAF78",
+          "text_heading_dark": "#CEAF78",
+          "text_heading_light": "#000000",
+          "text_subheading_dark": "#FFFFFF",
+          "text_subheading_light": "#000000",
+          "text_body_dark": "#FFFFFF",
+          "text_body_light": "#000000"
         }
       }
     ]
@@ -72,6 +79,13 @@
   {
     "name": "t:names.typography",
     "settings": [
+      {
+        "type": "checkbox",
+        "id": "apply_typography_overrides",
+        "label": "Apply Typography Overrides",
+        "info": "This overrides the typography settings like font size, weight, decoration. These will override theme settings.",
+        "default": true
+      },
       {
         "type": "header",
         "content": "t:content.colors"

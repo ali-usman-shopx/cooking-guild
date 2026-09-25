@@ -31,4 +31,37 @@
   {{ block.shopify_attributes }}
 >
   {{ block_settings.label }}
+  {% if block_settings.show_arrow_icon %}
+    <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.42756 11.4546L6.44318 10.483L10.4957 6.43044H0V5.02419H10.4957L6.44318 0.98442L7.42756 4.45843e-05L13.1548 5.72732L7.42756 11.4546Z" fill="white"/>
+    </svg>
+  {% endif %}
 </a>
+
+{% style %}
+  .{{ block_settings.style_class }}--{{ block.id }} {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    gap: 8px;
+  }
+
+  .{{ block_settings.style_class }}--{{ block.id }} svg {
+    width: 18px !important;
+    height: 13px;
+    margin-top: 5px;
+  }
+
+  .{{ block_settings.style_class }}--{{ block.id }} svg path {
+    fill: var(--arrow-color);
+  }
+
+  @media screen and (max-width: 768px) {
+    .{{ block_settings.style_class }}--{{ block.id }} svg {
+      width: 12px !important;
+      height: 15px;
+      margin-top: 4px;
+    }
+  }
+{% endstyle %}
