@@ -31,6 +31,7 @@
     size-style
     {{ class }}
     {% if background_color != blank %} color-custom-{{ block_id }}{% endif %}
+    {% if settings.is_quiz_call_section %}quiz-call-section{% endif %}
   "
   style="
     {% render 'border-override', settings: settings %}
@@ -65,6 +66,12 @@
     {% endif %}
   </div>
 
+  {% if settings.is_quiz_call_section %}
+    <span class="survey-tag">
+      TRY FREE SURVEY
+    </span>
+  {% endif %}
+
   <div
     class="
       group-block-content--{{ block.id }}
@@ -97,6 +104,50 @@
   /* Needs the .group-block__link ~ to be specific enough to take effect. */
   .group-block__link ~ .group-block-content--design-mode {
     pointer-events: auto;
+  }
+
+  /* Quiz Call Section Styling */
+  .quiz-call-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .quiz-call-section > .group-block-content {
+    position: relative;
+    max-width: 994px;
+  }
+
+  .quiz-call-section > .survey-tag {
+    position: absolute;
+    top: 40px;
+    right: 0px;
+
+    border-radius: 10px 0px 0px 10px;
+    padding: 16px 26px 15px 25px;
+    background-color: black;
+
+    color: white;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+
+  .quiz-call-section > .group-block-content .text-block > p {
+    color: black !important;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .quiz-call-section > .group-block-content {
+      padding-top: 52px;
+    }
+
+    .quiz-call-section > .survey-tag {
+      top: 0px;
+      right: 50%;
+      transform: translateX(50%);
+      border-radius: 0px 0px 10px 10px;
+    }
   }
 {% endstylesheet %}
 
