@@ -177,6 +177,15 @@
     --palette-darkest-rgb: {{ palette_darkest.rgb }};
     {% render 'brightness-opacities', background: settings.page_background_color %}
 
+    /* Custom Additions */
+    --color-accent: {{ settings.color_palette.text_heading_dark }};
+    --color-text-heading-dark: {{ settings.color_palette.text_heading_dark }};
+    --color-text-heading-light: {{ settings.color_palette.text_heading_light }};
+    --color-text-subheading-dark: {{ settings.color_palette.text_subheading_dark }};
+    --color-text-subheading-light: {{ settings.color_palette.text_subheading_light }};
+    --color-text-body-dark: {{ settings.color_palette.text_body_dark }};
+    --color-text-body-light: {{ settings.color_palette.text_body_light }};
+
     --color-primary-button-text: rgb({{ settings.palette_primary_button_text.rgba }});
     --color-primary-button-background: rgb({{ settings.palette_primary_button_background.rgba }});
     --color-primary-button-border: rgb({{ settings.palette_primary_button_border.rgba }});

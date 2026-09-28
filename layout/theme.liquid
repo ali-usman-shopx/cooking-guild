@@ -48,6 +48,130 @@
     {% endif %}
 
     {{ content_for_header }}
+
+    {% comment %} Custom Overrides {% endcomment %}
+    {% style %}
+      .button-custom-primary {
+        background-color: var(--color-accent);
+        border: 2px solid var(--color-accent);
+        border-radius: 24px;
+
+        padding: 14px 42px;
+
+        color: var(--color-text-body-light);
+        
+        transition: 300ms ease-out;
+
+        --arrow-color: var(--color-text-body-light);
+        
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .button-custom-primary:hover {
+        opacity: 0.8;
+        cursor: pointer;
+      }
+
+      .button-custom-secondary {
+        background-color: var(--color-background);
+        border: 2px solid var(--color-accent);
+        border-radius: 24px;
+
+        padding: 14px 42px;
+
+        color: var(--color-accent);
+        
+        transition: 300ms ease-out;
+
+        --arrow-color: var(--color-accent);
+
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .button-custom-secondary:hover {
+        background-color: var(--color-accent);
+        color: var(--color-text-body-light);
+        --arrow-color: var(--color-text-body-light);
+      }
+
+      .announcement-bar__text {
+        color: var(--color-text-body-light) !important;
+      }
+
+      .announcement-bar__text > a {
+        font-weight: 700;
+      }
+
+      @media screen and (max-width: 768px) {
+        .text-block > .announcement-bar__text {
+          font-size: 11px !important;
+        }
+      }
+
+      {% if settings.apply_typography_overrides %}
+        .text-block {
+          --color: var(--color-text-body-dark) !important;
+        }
+
+        .h1, .h2 {
+          --color : var(--color-text-heading-dark) !important;
+        }
+
+        .h3 {
+          --color: var(--color-text-subheading-dark) !important;
+        }
+
+        /* All Text */
+        .text-block > p {
+          font-size: 16px !important;
+        }
+
+        /* Large Heading */
+        .h1 > p {
+          font-size: 60px !important;
+          text-transform: uppercase;
+        }
+
+        /* Standard Heading */
+        .h2 > p {
+          font-size: 32px !important;
+          text-transform: uppercase;
+        }
+
+        /* Sub Heading */
+        .h3 > p {
+          font-size: 14px !important;
+          text-transform: uppercase;
+          text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+          /* All Text */
+          .text-block > p {
+            font-size: 14px !important;
+          }
+
+          /* Large Heading */
+          .h1 > p {
+            font-size: 40px !important;
+          }
+
+          /* Standard Heading */
+          .h2 > p {
+            font-size: 22px !important;
+          }
+
+          /* Sub Heading */
+          .h3 > p {
+            font-size: 14px !important;
+          }
+        }
+      {% endif %}
+    {% endstyle %}
   </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
