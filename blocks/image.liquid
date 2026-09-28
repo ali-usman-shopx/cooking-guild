@@ -112,11 +112,33 @@
   }
 {% endstylesheet %}
 
+{% style %}
+  {% if block.settings.image_with_text_1_styling %}
+    .image-block--{{ block.id }} {
+      position: absolute;
+      width: 100vw;
+      height: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      .image-block--{{ block.id }} {
+        position: relative;
+      }
+    }
+  {% endif %}
+{% endstyle %}
+
 {% schema %}
 {
   "name": "t:names.image",
   "tag": null,
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "image_with_text_1_styling",
+      "label": "Apply Image with Text 1 styling",
+      "default": false
+    },
     {
       "type": "image_picker",
       "id": "image",
