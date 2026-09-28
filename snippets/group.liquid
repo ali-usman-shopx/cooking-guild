@@ -67,6 +67,7 @@
 
   <div
     class="
+      group-block-content--{{ block.id }}
       group-block-content
       {% if request.design_mode %}group-block-content--design-mode{% endif %}
       layout-panel-flex
@@ -98,3 +99,13 @@
     pointer-events: auto;
   }
 {% endstylesheet %}
+
+{% style %}
+  @media screen and (max-width: 768px) {
+    .group-block-content--{{ block.id }} {
+      {% if block.settings.reversed_on_mobile %}
+        flex-direction: column-reverse;
+      {% endif %}
+    }
+  }
+{% endstyle %}
