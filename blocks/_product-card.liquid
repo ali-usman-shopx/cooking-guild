@@ -76,7 +76,37 @@
     .product-card--{{ block.id }}:hover .product-card-hover-image {
       opacity: 1;
     }
-  {% endif %}  
+  {% endif %}
+
+  {% if block.settings.apply_knife_collection_style %}
+    .product-card--{{ block.id }} {
+      overflow: visible;
+    }
+    
+    .product-card--{{ block.id }} .best-selling-badge {
+      display: none;
+    }
+
+    .product-card--{{ block.id }} .card-gallery {
+      overflow: visible !important;
+    }
+
+    .product-card--{{ block.id }} .product-media-container {
+      overflow: visible;
+      border-radius: 20px;
+    }
+
+    .product-card--{{ block.id }} .product-media {
+      position: relative;
+      padding: none;
+    }
+
+    .product-card--{{ block.id }} .product-media img {
+      position: absolute;
+      left: 0px;
+      top: -24px;
+    }
+  {% endif %}
 {% endstyle %}
 
 {% schema %}
@@ -127,6 +157,13 @@
       "id": "apply_custom_style",
       "label": "Apply Custom Style",
       "info": "Apply Custom Styling to the product card.",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "apply_knife_collection_style",
+      "label": "Apply Knife Collection Style",
+      "info": "Applies the knife accessories collection's style as per design.",
       "default": false
     },
     {

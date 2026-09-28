@@ -1030,6 +1030,7 @@
           "static": true,
           "settings": {
             "apply_custom_style": true,
+            "apply_knife_collection_style": false,
             "hover_image": "shopify://shop_images/card_hover_effect.svg",
             "product_card_gap": 4,
             "background_color": "",
@@ -1812,6 +1813,292 @@
         "padding-block-end": 100
       }
     },
+    "product_list_UEmfeF": {
+      "type": "product-list",
+      "blocks": {
+        "group_UaBqeK": {
+          "type": "group",
+          "name": "t:names.group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "reversed_on_mobile": false,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 20,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "button_TgigYt": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "show_arrow_icon": false,
+                "label": "SEE ALL COLLECTION →",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button-custom-primary",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            },
+            "review_iDp6zf": {
+              "type": "review",
+              "name": "t:names.product_review_stars",
+              "settings": {
+                "override_sizes": true,
+                "star_size": "12px",
+                "font_size": "12px",
+                "star_size_mobile": "11px",
+                "font_size_mobile": "12px",
+                "rating_margin_bottom": "0px",
+                "stars_style": "shaded",
+                "show_number": true,
+                "review_count_separator": "|",
+                "show_parenthesis": true,
+                "text_color": "",
+                "star_color": "#deb126",
+                "type_preset": "paragraph",
+                "width": "fit-content",
+                "alignment": "left",
+                "show_score_max_ratio": true,
+                "store_review_override": true,
+                "store_rating": 4.8,
+                "store_review_count": 30000,
+                "product_review_override": false,
+                "product_rating": 4.7,
+                "product_review_count": 1171
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "button_TgigYt",
+            "review_iDp6zf"
+          ]
+        },
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_Mm6iYi": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p>OTHER CATEGORIES</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_zHR9Gn": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p>Explore the World of Culinary Blades & Accessories</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 16,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_Mm6iYi",
+            "text_zHR9Gn"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "apply_custom_style": true,
+            "apply_knife_collection_style": true,
+            "hover_image": "shopify://shop_images/card_hover_effect.svg",
+            "product_card_gap": 4,
+            "background_color": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_C3wXNT": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 20,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_Br4476": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_C3wXNT",
+            "product_title_Br4476"
+          ]
+        }
+      },
+      "block_order": [
+        "group_UaBqeK"
+      ],
+      "name": "t:names.products_carousel",
+      "settings": {
+        "override_controls_position": true,
+        "collection": "cuso-essentials",
+        "layout_type": "carousel",
+        "carousel_on_mobile": false,
+        "max_products": 10,
+        "columns": 6,
+        "mobile_columns": "2",
+        "mobile_card_size": "44cqw",
+        "columns_gap": 32,
+        "rows_gap": 24,
+        "icons_style": "chevron",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "horizontal_alignment": "center",
+        "gap": 28,
+        "background_color": "",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
     "section_dnXXVF": {
       "type": "section",
       "blocks": {
@@ -2050,6 +2337,7 @@
           "static": true,
           "settings": {
             "apply_custom_style": false,
+            "apply_knife_collection_style": false,
             "product_card_gap": 4,
             "background_color": "",
             "border": "none",
@@ -2167,6 +2455,7 @@
     "product_list_iArC8h",
     "collection_list_dWJkPQ",
     "section_zEQKUQ",
+    "product_list_UEmfeF",
     "section_dnXXVF",
     "product_list_fa6P9H"
   ]
