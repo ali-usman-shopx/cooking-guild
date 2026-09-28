@@ -123,7 +123,7 @@
       }
 
       {% if settings.apply_typography_overrides %}
-        .text-block {
+        .text-block:not(.custom, .h1, .h2, .h3, .banner) {
           --color: var(--color-text-body-dark) !important;
         }
 
@@ -135,8 +135,12 @@
           --color: var(--color-text-subheading-dark) !important;
         }
 
+        .banner {
+          --color: black;
+        }
+
         /* All Text */
-        .text-block > p {
+        .text-block:not(.custom, .h1, .h2, .h3, .banner) > p {
           font-size: 16px !important;
         }
 
@@ -162,9 +166,14 @@
           text-decoration: underline;
         }
 
+        .banner > p {
+          font-size: 13px !important;
+          font-weight: 500 !important;
+        }
+
         @media screen and (max-width: 768px) {
           /* All Text */
-          .text-block > p {
+          .text-block:not(.custom, .h1, .h2, .h3, .banner) > p {
             font-size: 14px !important;
           }
 
@@ -181,6 +190,11 @@
           /* Sub Heading */
           .h3 > p {
             font-size: 14px !important;
+          }
+
+          .banner > p {
+            font-size: 13px !important;
+            font-weight: 500 !important;
           }
         }
       {% endif %}

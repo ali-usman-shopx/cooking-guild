@@ -67,6 +67,7 @@
         layout-panel-flex--{{ section.settings.content_direction }}
         section-content-wrapper
         {% if section.settings.vertical_on_mobile %} mobile-column{% endif %}
+        {% if section.settings.multicolumn_carousel %}multicolumn-carousel{% endif %}
       "
       style="
         {% render 'layout-panel-style', settings: section.settings %}
@@ -107,5 +108,63 @@
 
   .custom-section-content {
     z-index: var(--layer-flat);
+  }
+
+  /* Multicolumn carousel */
+  @media screen and (max-width: 1023px) {
+    .multicolumn-carousel {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+
+      width: 100%;
+      max-width: 100%;
+
+      overflow-x: auto;
+      overflow-y: hidden;
+
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+
+      /* Prevent the theme's flex variables from changing the carousel */
+      --flex-direction: row !important;
+      --flex-wrap: nowrap !important;
+      --flex-wrap-mobile: nowrap !important;
+    }
+
+    .multicolumn-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .multicolumn-carousel > .group-block {
+      flex: 0 0 calc((100% - 16px) / 3);
+
+      width: calc((100% - 16px) / 3);
+      min-width: calc((100% - 16px) / 3) !important;
+      max-width: calc((100% - 16px) / 3);
+
+      scroll-snap-align: start !important;
+      scroll-snap-stop: always !important;
+
+      /* Override the theme's size-style width */
+      --size-style-width: calc((100% - 16px) / 3);
+      --size-style-width-mobile: calc((100% - 16px) / 3);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .multicolumn-carousel > .group-block {
+      flex: 0 0 100%;
+
+      width: 100%;
+      min-width: 100% !important;
+      max-width: 100%;
+
+      --size-style-width: 100%;
+      --size-style-width-mobile: 100%;
+    }
   }
 {% endstylesheet %}
