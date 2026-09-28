@@ -13,18 +13,48 @@
     assign scale_max = product.metafields.reviews.rating.value.scale_max | default: 5
     assign rating_count = product.metafields.reviews.rating_count | default: 3
   endif
+
+  if block_settings.store_review_override
+    assign rating = block_settings.store_rating
+    assign scale_max = 5
+    assign rating_count = block_settings.store_review_count
+  endif
+  
+  if block_settings.product_review_override
+    assign rating = block_settings.product_rating
+    assign scale_max = 5
+    assign rating_count = block_settings.product_review_count
+  endif
 -%}
 
-{% if block_settings.text_color != blank %}
-  {% style %}
+{% style %}
+  .rating-wrapper-{{ block.id }} {
+    --star-fill-color: {{ block_settings.star_color }};
+    --star-fill-color-rgb: {{ block_settings.star_color.rgb }};
+    {% if block_settings.text_color != blank %}
+        --color: {{ block_settings.text_color }};
+        --color-rgb: {{ block_settings.text_color.rgb }};
+    {% endif %}
+    {% if block_settings.override_sizes == false %}    
+      --star-size: calc(var(--font-{{ block_settings.type_preset }}--size) * 1.1);
+      --font-size: calc(var(--font-{{ block_settings.type_preset }}--size));
+    {% else %}
+      --star-size: {{block_settings.star_size}};
+      --font-size: {{block_settings.font_size}};
+    {% endif %}
+
+    --rating-margin-bottom: {{ block_settings.rating_margin_bottom }};
+  }
+
+  @media screen and (max-width: 768px) {
     .rating-wrapper-{{ block.id }} {
-      --star-fill-color: {{ block_settings.text_color }};
-      --star-fill-color-rgb: {{ block_settings.text_color.rgb }};
-      --color: {{ block_settings.text_color }};
-      --color-rgb: {{ block_settings.text_color.rgb }};
+      {% if block_settings.override_sizes %}
+        --star-size: {{block_settings.star_size_mobile}};
+        --font-size: {{block_settings.font_size_mobile}};
+      {% endif %}
     }
-  {% endstyle %}
-{% endif %}
+  }
+{% endstyle %}
 
 {%- if rating != blank -%}
   {% liquid
@@ -69,7 +99,6 @@
     </svg>
     <div
       class="rating"
-      style="--star-size: calc(var(--font-{{ block_settings.type_preset }}--size) * 1.1);"
       aria-label="{{ 'accessibility.rating' | t: rating: rating }}"
     >
       {% if block_settings.stars_style == 'single' %}
@@ -104,11 +133,18 @@
           <span aria-hidden="true">{{- rating | round: 1 }}</span>
         {%- endif -%}
         {%- if block_settings.stars_style == 'single' and block_settings.show_number -%}
-          <span class="rating-count-separator">|</span>
+          <span class="rating-count-separator">{{ block_settings.review_count_separator }}</span>
         {%- endif -%}
-        {%- if block_settings.show_number -%}
+        {% if block_settings.show_score_max_ratio %}
+          {{ rating | round: 1 }} / {{ scale_max | times: 100 | money_without_currency }}
+        {%  endif %}
+        {%- if block_settings.show_number and block_settings.store_review_override == false and block_settings.product_review_override == false -%}
           {{- rating_count }}
-          {{ 'content.reviews' | t }}
+          {{ 'content.reviews' | t }}        
+        {% elsif block_settings.show_number and block_settings.product_review_override %}
+          {%if block_settings.show_parenthesis %}({% endif %}&nbsp;<span style="text-decoration: underline; color: #212121">{{ rating_count}} Reviews</span>&nbsp;{%if block_settings.show_parenthesis %}){% endif %}
+        {% elsif block_settings.show_number and block_settings.store_review_override %}
+          {%if block_settings.show_parenthesis %}({% endif %}Over {{ rating_count | times: 100 | money_without_currency | remove: ".00" }} Happy Customers{%if block_settings.show_parenthesis %}){% endif %}
         {%- endif -%}
       </p>
     {%- endif -%}
@@ -137,13 +173,20 @@
 
   .rating {
     gap: var(--gap-3xs);
+    margin-bottom: var(--rating-margin-bottom);
   }
 
   .rating-wrapper .rating-count,
   .rating-wrapper .rating-count-separator {
-    color: var(--star-fill-color);
+    color: var(--color);
     margin: 0;
     white-space: nowrap;
+    font-size: var(--font-size);
+  }
+
+  .rating-count * {
+    font-size: var(--font-size);
+    font-weight: 500;
   }
 
   .rating-count-separator {
@@ -155,10 +198,18 @@
   .stars {
     height: var(--star-size);
     fill: var(--empty-star-fill-color);
+    align-self: center;
   }
 
   .filled-star {
     fill: var(--star-fill-color);
+  }
+
+  /* Custom Very Small Screen Overrides */
+  @media screen and (max-width: 374px) {
+    .rating-wrapper {
+      flex-wrap: wrap;
+    }
   }
 {% endstylesheet %}
 
@@ -167,6 +218,48 @@
   "name": "t:names.product_review_stars",
   "tag": null,
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "override_sizes",
+      "default": true,
+      "info": "Enables Size Overrides",
+      "label": "Override Sizes"
+    },
+    {
+      "type": "text",
+      "id": "star_size",
+      "label": "Star Size",
+      "default": "12px",
+      "visible_if": "{{ block.settings.override_sizes }}"
+    },
+    {
+      "type": "text",
+      "id": "font_size",
+      "label": "Font Size",
+      "default": "14px",
+      "visible_if": "{{ block.settings.override_sizes }}"
+    },
+    {
+      "type": "text",
+      "id": "star_size_mobile",
+      "label": "Star Size Mobile",
+      "default": "19px",
+      "visible_if": "{{ block.settings.override_sizes }}"
+    },
+    {
+      "type": "text",
+      "id": "font_size_mobile",
+      "label": "Font Size Mobile",
+      "default": "14px",
+      "visible_if": "{{ block.settings.override_sizes }}"
+    },
+    {
+      "type": "text",
+      "id": "rating_margin_bottom",
+      "label": "Rating Margin Bottom",
+      "default": "0px",
+      "visible_if": "{{ block.settings.override_sizes }}"
+    },
     {
       "type": "paragraph",
       "content": "t:content.resource_reference_product_review"
@@ -202,10 +295,30 @@
       "default": true
     },
     {
+      "type": "text",
+      "id": "review_count_separator",
+      "label": "Review Count Separator",
+      "default": "|",
+      "visible_if": "{{ block.settings.show_number }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_parenthesis",
+      "label": "Show Parenthesis",
+      "default": true,
+      "visible_if": "{{ block.settings.show_number }}"
+    },
+    {
       "type": "color",
       "id": "text_color",
       "label": "t:settings.text_color",
       "placeholder": "t:settings.default"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star Fill Color",
+      "placeholder": "#6d0ff0"
     },
     {
       "type": "header",
@@ -269,6 +382,55 @@
       "label": "t:settings.alignment",
       "default": "left",
       "visible_if": "{{ block.settings.width != 'fit-content' }}"
+    },
+    {
+      "type": "header",
+      "content": "Review Override"
+    },
+    {
+      "type": "checkbox",
+      "label": "Show Score / Max",
+      "id": "show_score_max_ratio"
+    },
+    {
+      "type": "checkbox",
+      "label": "Store Review Override",
+      "id": "store_review_override",
+      "default": false
+    },
+    {
+      "type": "number",
+      "label": "Rating",
+      "id": "store_rating",
+      "default": 5,
+      "visible_if": "{{ block.settings.store_review_override }}"
+    },
+    {
+      "type": "number",
+      "label": "Count of Reviews",
+      "id": "store_review_count",
+      "default": 20000,
+      "visible_if": "{{ block.settings.store_review_override }}"
+    },
+    {
+      "type": "checkbox",
+      "label": "Product Review Override",
+      "id": "product_review_override",
+      "default": false
+    },
+    {
+      "type": "number",
+      "label": "Rating",
+      "id": "product_rating",
+      "default": 4.7,
+      "visible_if": "{{ block.settings.product_review_override }}"
+    },
+    {
+      "type": "number",
+      "label": "Count of Reviews",
+      "id": "product_review_count",
+      "default": 1171,
+      "visible_if": "{{ block.settings.product_review_override }}"
     }
   ],
   "presets": [
