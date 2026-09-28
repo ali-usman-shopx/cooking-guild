@@ -12,6 +12,11 @@
   assign scoped_class = block.settings.style_class | append: '--' | append: block.id
   assign class = 'add-to-cart-button ' | append: block.settings.style_class | append: ' ' | append: scoped_class
   assign id = 'BuyButtons-ProductSubmitButton-' | append: block.id
+  
+  assign show_icon = can_add_to_cart
+  if block.settings.style_class == "button-custom-primary" or block.settings.style_class == "button-custom-secondary"
+    assign show_icon = false
+  endif
 %}
 {% render 'button-custom-styles', block_settings: block.settings, block_id: block.id %}
 {% render 'add-to-cart-button-styles' %}
@@ -25,7 +30,7 @@
     id: id,
     class: class,
     can_add_to_cart: can_add_to_cart,
-    show_icon: can_add_to_cart,
+    show_icon: show_icon,
     product: closest.product,
     add_to_cart_text: add_to_cart_text,
     data_testid: 'standalone-add-to-cart'
@@ -49,6 +54,14 @@
         {
           "value": "button-secondary",
           "label": "t:options.secondary"
+        },
+        {
+          "value": "button-custom-primary",
+          "label": "Custom Primary"
+        },
+        {
+          "value": "button-custom-secondary",
+          "label": "Custom Secondary"
         },
         {
           "value": "button-custom",
