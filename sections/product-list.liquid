@@ -8,7 +8,7 @@
 %}
 
 <div
-  class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+  class="section--{{ section.id }} section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
 ></div>
 <div
   data-testid="product-list"
@@ -86,6 +86,23 @@
   </div>
 </div>
 
+{% style %}
+  {% if section.settings.override_controls_position %}
+    .section--{{ section.id }} .slideshow-control {
+      position: absolute;
+      top: 30%;
+    }
+
+    .section--{{ section.id }} .slideshow-control--next {
+      right: 10px;
+    }
+
+    .section--{{ section.id }} .slideshow-control--previous {
+      left: 10px;
+    }
+  {% endif %}
+{% endstyle %}
+
 {% schema %}
 {
   "name": "t:names.product_list",
@@ -105,6 +122,12 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "override_controls_position",
+      "label": "Override Controls Position",
+      "default": true
+    },
     {
       "type": "collection",
       "id": "collection",

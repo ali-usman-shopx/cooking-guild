@@ -123,7 +123,7 @@
       }
 
       {% if settings.apply_typography_overrides %}
-        .text-block:not(.custom, .h1, .h2, .h3, .banner) {
+        .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner) {
           --color: var(--color-text-body-dark) !important;
         }
 
@@ -139,8 +139,8 @@
           --color: black;
         }
 
-        /* All Text */
-        .text-block:not(.custom, .h1, .h2, .h3, .banner) > p {
+        /* Body Text */
+        .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner) > p {
           font-size: 16px !important;
         }
 
@@ -148,22 +148,28 @@
         .h1 > p {
           font-size: 60px !important;
           font-weight: 400 !important;
-          text-transform: uppercase;
+          text-transform: uppercase !important;
         }
 
         /* Standard Heading */
         .h2 > p {
           font-size: 32px !important;
           font-weight: 400 !important;
-          text-transform: uppercase;
+          text-transform: uppercase !important;
         }
 
         /* Sub Heading */
         .h3 > p {
           font-size: 14px !important;
           font-weight: 400 !important;
-          text-transform: uppercase;
+          text-transform: uppercase !important;
           text-decoration: underline;
+        }
+
+        /* Product Card etc Titles */
+        .h4 > p {
+          font-size: 16px !important;
+          font-weight: 500 !important;
         }
 
         .banner > p {
@@ -172,8 +178,8 @@
         }
 
         @media screen and (max-width: 768px) {
-          /* All Text */
-          .text-block:not(.custom, .h1, .h2, .h3, .banner) > p {
+          /* Body Text */
+          .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner) > p {
             font-size: 14px !important;
           }
 
@@ -189,6 +195,11 @@
 
           /* Sub Heading */
           .h3 > p {
+            font-size: 14px !important;
+          }
+
+          /* Product Card etc Titles */
+          .h4 > p {
             font-size: 14px !important;
           }
 

@@ -142,7 +142,7 @@
           {{- rating_count }}
           {{ 'content.reviews' | t }}        
         {% elsif block_settings.show_number and block_settings.product_review_override %}
-          {%if block_settings.show_parenthesis %}({% endif %}&nbsp;<span style="text-decoration: underline; color: #212121">{{ rating_count}} Reviews</span>&nbsp;{%if block_settings.show_parenthesis %}){% endif %}
+          {%if block_settings.show_parenthesis %}({% endif %}&nbsp;<span style="text-decoration: underline;">{{ rating_count}} Reviews</span>&nbsp;{%if block_settings.show_parenthesis %}){% endif %}
         {% elsif block_settings.show_number and block_settings.store_review_override %}
           {%if block_settings.show_parenthesis %}({% endif %}Over {{ rating_count | times: 100 | money_without_currency | remove: ".00" }} Happy Customers{%if block_settings.show_parenthesis %}){% endif %}
         {%- endif -%}
