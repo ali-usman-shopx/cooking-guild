@@ -12,13 +12,35 @@
 {% endif %}
 
 {% capture icon %}
-  {% render 'icon-or-image',
-    icon: block_settings.icon,
-    image_upload: block_settings.image_upload,
-    width: block_settings.width,
-    class_name: icon_block_class,
-    attributes: block.shopify_attributes
-  %}
+  {%if block_settings.is_custom_social_media_icon %}
+    <span class="custom-icon-wrapper">
+    {% case block_settings.social_media_type %}
+      {% when 'facebook' %}
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="15" fill="#E4E4E4"/>
+          <path d="M15.9898 21.6818V15.4071H17.7647L18 13.1987H15.9898L15.9928 12.0933C15.9928 11.5173 16.0477 11.2088 16.8778 11.2088H17.9876V9H16.2122C14.0798 9 13.3293 10.0713 13.3293 11.8731V13.1989H12V15.4075H13.3293V21.5928C13.8472 21.6957 14.3826 21.75 14.9307 21.75C15.2849 21.75 15.6386 21.7272 15.9898 21.6818Z" fill="black"/>
+        </svg>
+      {% when 'linkedin' %}
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="15" fill="#E4E4E4"/>
+          <path d="M9.23047 10.5718C9.23047 10.1833 9.36691 9.86275 9.63977 9.61023C9.91264 9.3577 10.2674 9.23145 10.704 9.23145C11.1328 9.23145 11.4797 9.35576 11.7448 9.60441C12.0176 9.86082 12.1541 10.1949 12.1541 10.6067C12.1541 10.9797 12.0215 11.2905 11.7565 11.5391C11.4836 11.7955 11.125 11.9238 10.6806 11.9238H10.6689C10.2401 11.9238 9.89315 11.7955 9.62808 11.5391C9.363 11.2827 9.23047 10.9603 9.23047 10.5718ZM9.3825 20.7699V12.9844H11.9786V20.7699H9.3825ZM13.4171 20.7699H16.0132V16.4226C16.0132 16.1506 16.0444 15.9408 16.1068 15.7932C16.2159 15.529 16.3816 15.3056 16.6038 15.1231C16.826 14.9405 17.1047 14.8492 17.4399 14.8492C18.3131 14.8492 18.7497 15.4358 18.7497 16.6091V20.7699H21.3459V16.306C21.3459 15.1561 21.073 14.2839 20.5272 13.6895C19.9815 13.0951 19.2604 12.7979 18.3638 12.7979C17.3581 12.7979 16.5745 13.2291 16.0132 14.0916V14.1149H16.0015L16.0132 14.0916V12.9844H13.4171C13.4326 13.233 13.4404 14.0061 13.4404 15.3037C13.4404 16.6013 13.4326 18.4234 13.4171 20.7699Z" fill="black"/>
+        </svg>
+      {% when 'twitter' %}
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="15" fill="#E4E4E4"/>
+          <path d="M22.925 11.116C22.3672 11.3476 21.7729 11.5012 21.1532 11.5757C21.7907 11.2154 22.2772 10.6491 22.506 9.96657C21.9116 10.3021 21.2554 10.5391 20.556 10.6713C19.9916 10.1024 19.1872 9.75 18.3097 9.75C16.6072 9.75 15.2366 11.0583 15.2366 12.6621C15.2366 12.8929 15.2572 13.1148 15.3079 13.326C12.7513 13.208 10.4891 12.0479 8.96942 10.2808C8.70411 10.7166 8.54849 11.2154 8.54849 11.7524C8.54849 12.7607 9.09692 13.6544 9.91442 14.1719C9.42036 14.163 8.93567 14.0272 8.52505 13.8133C8.52505 13.8222 8.52505 13.8337 8.52505 13.8453C8.52505 15.2601 9.59099 16.4352 10.9888 16.7059C10.7385 16.7707 10.4657 16.8018 10.1825 16.8018C9.98567 16.8018 9.78692 16.7911 9.60036 16.7521C9.9988 17.905 11.1294 18.7527 12.4738 18.7802C11.4275 19.555 10.0991 20.0219 8.66099 20.0219C8.4088 20.0219 8.16692 20.0112 7.92505 19.982C9.28724 20.8136 10.9016 21.2885 12.6425 21.2885C18.3013 21.2885 21.395 16.8506 21.395 13.0038C21.395 12.8751 21.3904 12.7509 21.3838 12.6275C21.9941 12.2175 22.5069 11.7053 22.925 11.116Z" fill="black"/>
+        </svg>
+    {% endcase %}
+    </span>
+  {% else %}
+    {% render 'icon-or-image',
+      icon: block_settings.icon,
+      image_upload: block_settings.image_upload,
+      width: block_settings.width,
+      class_name: icon_block_class,
+      attributes: block.shopify_attributes
+    %}
+  {% endif %}
 {% endcapture %}
 
 {%- if block_settings.link != blank -%}
@@ -46,11 +68,64 @@
   }
 {% endstylesheet %}
 
+{% style %}
+  {% if block.settings.is_custom_social_media_icon %}
+    .custom-icon-wrapper {
+      width: {{ block.settings.width }};
+      height: {{ block.settings.height }};
+    }
+
+    .custom-icon-wrapper > svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .custom-icon-wrapper > svg > * {
+      transition: 150ms ease-out;
+    }
+
+    .custom-icon-wrapper:hover > svg > circle {
+      fill: #C09E6F;
+    }
+
+    .custom-icon-wrapper:hover > svg > path {
+      fill: white;
+    }
+  {% endif %}
+{% endstyle %}
+
 {% schema %}
 {
   "name": "t:names.icon",
   "class": "icon-block",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "is_custom_social_media_icon",
+      "label": "Is Custom Social Media Icon",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "social_media_type",
+      "label": "Social Media",
+      "visible_if": "{{ block.settings.is_custom_social_media_icon }}",
+      "options": [
+        {
+          "value": "facebook",
+          "label": "facebook"
+        },
+        {
+          "value": "linkedin",
+          "label": "linkedin"
+        },
+        {
+          "value": "twitter",
+          "label": "twitter"
+        }
+      ],
+      "default": "facebook"
+    },
     {
       "type": "select",
       "id": "icon",
