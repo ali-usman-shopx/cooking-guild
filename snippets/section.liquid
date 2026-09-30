@@ -68,6 +68,7 @@
         section-content-wrapper
         {% if section.settings.vertical_on_mobile %} mobile-column{% endif %}
         {% if section.settings.multicolumn_carousel %}multicolumn-carousel{% endif %}
+        {% if section.settings.is_footer %}footer-section{% endif %}
       "
       style="
         {% render 'layout-panel-style', settings: section.settings %}
@@ -165,6 +166,30 @@
 
       --size-style-width: 100%;
       --size-style-width-mobile: 100%;
+    }
+  }
+
+  /* Footer Section Styling */
+  .footer-section {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    justify-content: space-around;
+  }
+
+  .footer-section ul {
+    padding-left: 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .footer-section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 1300px) {
+    .footer-section {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 {% endstylesheet %}
