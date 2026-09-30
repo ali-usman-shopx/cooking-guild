@@ -71,7 +71,8 @@
           "text_subheading_dark": "#FFFFFF",
           "text_subheading_light": "#000000",
           "text_body_dark": "#FFFFFF",
-          "text_body_light": "#000000"
+          "text_body_light": "#000000",
+          "text_review_dark": "#E4E4E4"
         }
       }
     ]

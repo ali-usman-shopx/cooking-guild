@@ -41,6 +41,17 @@
 %}
 
 {% capture image %}
+  {% if block_settings.enable_backdrop and block_settings.backdrop_image %}
+    {{
+      block_settings.backdrop_image
+      | image_url: width: 3840
+      | image_tag:
+        width: block_settings.backdrop_image.width,
+        widths: widths,
+        class: 'backdrop-image',
+        sizes: sizes
+    }}
+  {% endif %}
   {%- if block_settings.image -%}
     {{
       block_settings.image
@@ -110,6 +121,16 @@
     object-fit: cover;
     aspect-ratio: var(--ratio);
   }
+
+  /* Backdrop Image */
+  .backdrop-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: none;
+    width: 145%;
+  }
 {% endstylesheet %}
 
 {% style %}
@@ -126,6 +147,17 @@
       }
     }
   {% endif %}
+
+  {% if block.settings.enable_backdrop %}
+    .image-block--{{ block.id }} {
+      position: relative;
+      overflow: visible;
+    }
+
+    .image-block--{{ block.id }} .image-block__image {
+      z-index: 99;
+    }
+  {% endif %}
 {% endstyle %}
 
 {% schema %}
@@ -138,6 +170,18 @@
       "id": "image_with_text_1_styling",
       "label": "Apply Image with Text 1 styling",
       "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_backdrop",
+      "label": "Enable Backdrop",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "backdrop_image",
+      "label": "Backdrop Image",
+      "visible_if": "{{ block.settings.enable_backdrop }}"
     },
     {
       "type": "image_picker",

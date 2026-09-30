@@ -123,11 +123,11 @@
       }
 
       {% if settings.apply_typography_overrides %}
-        .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner) {
+        .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner, .review-headline, .review-body, .review-customer) {
           --color: var(--color-text-body-dark) !important;
         }
 
-        .h1, .h2 {
+        .h1, .h2, .review-customer {
           --color : var(--color-text-heading-dark) !important;
         }
 
@@ -139,8 +139,12 @@
           --color: black;
         }
 
+        .review-headline, .review-body {
+          --color: var(--color-text-review-dark) !important;
+        }
+
         /* Body Text */
-        .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner) > p {
+        .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner, .review-headline, .review-body, .review-customer) > p {
           font-size: 16px !important;
         }
 
@@ -177,6 +181,21 @@
           font-weight: 500 !important;
         }
 
+        .review-headline > p {
+          font-size: 16px !important;
+          font-weight: 700 !important;
+        }
+
+        .review-body > p {
+          font-size: 16px !important;
+          font-weight: 400 !important;
+        }
+        
+        .review-customer > p {
+          font-size: 16px !important;
+          font-weight: 700 !important;
+        }
+
         @media screen and (max-width: 768px) {
           /* Body Text */
           .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner) > p {
@@ -206,6 +225,18 @@
           .banner > p {
             font-size: 13px !important;
             font-weight: 500 !important;
+          }
+
+          .review-headline > p {
+            font-size: 14px !important;
+          }
+
+          .review-body > p {
+            font-size: 14px !important;
+          }
+          
+          .review-customer > p {
+            font-size: 14px !important;
           }
         }
       {% endif %}
