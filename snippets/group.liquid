@@ -32,6 +32,7 @@
     {{ class }}
     {% if background_color != blank %} color-custom-{{ block_id }}{% endif %}
     {% if settings.is_quiz_call_section %}quiz-call-section{% endif %}
+    {% if settings.is_newsletter_section %}newsletter-section{% endif %}
   "
   style="
     {% render 'border-override', settings: settings %}
@@ -148,6 +149,24 @@
       transform: translateX(50%);
       border-radius: 0px 0px 10px 10px;
     }
+  }
+
+  /* Newsletter Styling */
+  .newsletter-section {
+    max-width: 789px;
+  }
+
+  .newsletter-section .email-signup-block {
+    max-width: 687px;
+  }
+
+  .newsletter-section .email-signup-block .email-signup__input {
+    font-size: 14px;
+    outline: none;
+  }
+
+  .newsletter-section .text-block.custom > p {
+    text-decoration: underline;
   }
 {% endstylesheet %}
 
