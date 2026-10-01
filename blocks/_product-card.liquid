@@ -76,10 +76,30 @@
     .product-card--{{ block.id }}:hover .product-card-hover-image {
       opacity: 1;
     }
+
+    {% if product.tags contains 'cookbook' %}      
+      .product-card--{{ block.id }} .product-media > img {
+        filter: grayscale(100%);
+        -webkit-filter: grayscale(100%);
+      }
+  
+      .product-card--{{ block.id }}:hover .product-media > img {
+        filter: grayscale(0%);
+        -webkit-filter: grayscale(0%);
+      }
+    {% endif %}
   {% endif %}
 
   {% if block.settings.apply_knife_collection_style %}
+    .resource-list__slide:has(.product-card--{{ block.id }}) {
+      overflow: visible;
+    }
+
     .product-card--{{ block.id }} {
+      overflow: visible;
+    }
+
+    .product-card--{{ block.id }} .product-card__content {
       overflow: visible;
     }
     
