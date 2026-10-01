@@ -472,6 +472,10 @@
 {% style %}
   /* Header Overrides */
   {% if section.settings.override_header %}
+  .header__row {
+    padding-top: 7px;
+  }
+
   .header__icon {
     padding: 0px !important;
     width: 30px;
@@ -483,9 +487,11 @@
     height: 30px;
   }
 
-  .search-action {
-    padding-left: 20px;
-    padding-right: 15px;
+  @media screen and (min-width: 1026px) {
+    .search-action {
+      padding-left: 20px;
+      padding-right: 15px;
+    }
   }
 
   @media screen and (min-width: 768px) and (max-width: 1025px) {
@@ -495,6 +501,10 @@
   }
   
   @media screen and (max-width: 768px) {
+    .header__row {
+      padding-top: 9px;
+    }
+
     .header-logo {
       grid-area: leftA !important;
       width: 143px;
@@ -511,7 +521,7 @@
 
     .search-action {
       position: absolute !important;
-      right: 28%;
+      right: 23%;
     }
   }
   {% endif %}

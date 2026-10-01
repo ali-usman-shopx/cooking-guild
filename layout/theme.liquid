@@ -51,6 +51,11 @@
 
     {% comment %} Custom Overrides {% endcomment %}
     {% style %}
+      * {
+        /* Disable the tap highlight globally */
+        -webkit-tap-highlight-color: transparent;
+      }
+
       .button-custom-primary {
         background-color: var(--color-accent);
         border: 2px solid var(--color-accent);
@@ -98,7 +103,7 @@
         --arrow-color: var(--color-text-body-light);
       }
 
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 1020px) {
         .button-custom-primary {
           padding: 14px 7px;
         }

@@ -178,4 +178,14 @@
       {% endif %}
     }
   }
+
+  @media screen and (max-width: 920px) {
+    .group-block-content--{{ block.id }} {
+      {% if block.settings.reversed_on_tablet %}
+        flex-direction: column-reverse;
+      {% elsif block.settings.vertical_on_tablet %}
+        flex-direction: column;
+      {% endif %}
+    }
+  }
 {% endstyle %}

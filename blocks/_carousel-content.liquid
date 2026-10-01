@@ -14,6 +14,10 @@
     assign slideshow_class = slideshow_class | append: ' testimonial-carousel '
   endif
 
+  if block.settings.is_hero_carousel
+    assign slideshow_class = slideshow_class | append: ' hero-carousel '
+  endif
+
   if section.settings.section_width == 'page-width'
     assign slideshow_gutters = 'start end'
     assign gutter_style = '--gutter-slide-width: var(--util-page-margin-offset);'
@@ -45,12 +49,23 @@
   {% render 'border-override', settings: block.settings %}
 {% endcapture %}
 
+{% capture slideshow_controls %}
+  {% if block.settings.is_hero_carousel %}
+    {% render 'slideshow-controls',
+      style: 'dots',
+      item_count: slide_count,
+      show_arrows: false
+    %}
+  {% endif %}
+{% endcapture %}
+
 <div
   class="force-full-width"
   style="{{ gutter_style }}"
 >
   {% render 'slideshow',
     class: slideshow_class,
+    controls: slideshow_controls
     style: slideshow_style,
     slides: blocks_content,
     show_arrows: show_arrows,
@@ -124,6 +139,32 @@
       width: 100%;
     }
   }
+
+  /* Hero Carousel Styling */
+  .hero-carousel slideshow-slides {
+    padding-inline: 0px !important;
+    height: fit-content;
+  }
+
+  .hero-carousel slideshow-slides > .card {
+    width: 100%;
+    padding-inline: 40px;
+
+    & .card__inner {
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    & .card__inner > .group-block {
+      max-width: 1268px;
+    }
+
+    @media screen and (max-width: 920px) {
+      & .card__inner > .group-block > .group-block-content {
+        --flex-direction: column-reverse !important;
+      }
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -140,6 +181,12 @@
       "type": "checkbox",
       "id": "is_testimonial_carousel",
       "label": "Testimonial Carousel",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "is_hero_carousel",
+      "label": "Hero Carousel",
       "default": false
     },
     {
