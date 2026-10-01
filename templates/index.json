@@ -2112,7 +2112,7 @@
         "collection": "featured-knives",
         "layout_type": "carousel",
         "carousel_on_mobile": false,
-        "max_products": 6,
+        "max_products": 4,
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
@@ -2239,6 +2239,7 @@
           "name": "t:names.collection_card",
           "static": true,
           "settings": {
+            "apply_hover_effects": true,
             "placement": "below_image",
             "horizontal_alignment": "flex-start",
             "vertical_alignment": "flex-start",
@@ -5198,7 +5199,7 @@
         "collection": "cookbooks",
         "layout_type": "carousel",
         "carousel_on_mobile": false,
-        "max_products": 6,
+        "max_products": 4,
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
@@ -5489,6 +5490,7 @@
           "name": "t:names.collection_card",
           "static": true,
           "settings": {
+            "apply_hover_effects": true,
             "placement": "below_image",
             "horizontal_alignment": "flex-start",
             "vertical_alignment": "flex-start",
@@ -5752,6 +5754,7 @@
           "name": "t:names.blog_card",
           "static": true,
           "settings": {
+            "override_styles": true,
             "alignment": "left",
             "gap": 8,
             "background_color": "",
