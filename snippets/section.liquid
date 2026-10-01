@@ -202,6 +202,14 @@
   @media screen and (min-width: 1300px) {
     .footer-section {
       grid-template-columns: repeat(4, 1fr);
+
+      &>.group-block:nth-child(2 of .group-block) {
+        margin-left: 40px;
+      }
+
+      &>.group-block:nth-child(3 of .group-block) {
+        margin-left: 70px;
+      }
     }
   }
 {% endstylesheet %}
