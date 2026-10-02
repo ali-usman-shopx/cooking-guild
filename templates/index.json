@@ -1288,6 +1288,8 @@
       },
       "name": "t:names.carousel",
       "settings": {
+        "override_background_image": true,
+        "background_image": "shopify://shop_images/flames.png",
         "columns": 1,
         "mobile_columns": "1",
         "section_width": "page-width",
@@ -1925,7 +1927,7 @@
             "apply_custom_style": true,
             "apply_knife_collection_style": false,
             "hover_image": "shopify://shop_images/card_hover_effect.svg",
-            "product_card_gap": 4,
+            "product_card_gap": 10,
             "background_color": "",
             "border": "none",
             "border_width": 1,
@@ -2109,6 +2111,7 @@
       "name": "t:names.products_carousel",
       "settings": {
         "override_controls_position": true,
+        "override_tablet_columns_count": true,
         "collection": "featured-knives",
         "layout_type": "carousel",
         "carousel_on_mobile": false,
@@ -3069,6 +3072,7 @@
       },
       "name": "Testimonial Carousel",
       "settings": {
+        "override_background_image": false,
         "columns": 1,
         "mobile_columns": "1",
         "section_width": "page-width",
@@ -4252,6 +4256,7 @@
       "name": "t:names.products_carousel",
       "settings": {
         "override_controls_position": true,
+        "override_tablet_columns_count": false,
         "collection": "knife-carousel",
         "layout_type": "carousel",
         "carousel_on_mobile": false,
@@ -5012,7 +5017,7 @@
             "apply_custom_style": true,
             "apply_knife_collection_style": false,
             "hover_image": "shopify://shop_images/card_hover_effect.svg",
-            "product_card_gap": 4,
+            "product_card_gap": 10,
             "background_color": "",
             "border": "none",
             "border_width": 1,
@@ -5196,6 +5201,7 @@
       "name": "t:names.products_carousel",
       "settings": {
         "override_controls_position": true,
+        "override_tablet_columns_count": true,
         "collection": "cookbooks",
         "layout_type": "carousel",
         "carousel_on_mobile": false,
@@ -5375,8 +5381,8 @@
         "border_opacity": 100,
         "border_color": "",
         "border_radius": 20,
-        "padding-block-start": 32,
-        "padding-block-end": 32
+        "padding-block-start": 90,
+        "padding-block-end": 90
       }
     },
     "collection_list_NiW4Bq": {
