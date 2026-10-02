@@ -8,9 +8,13 @@
 
 <div
   class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+  {% if section.settings.override_background_image and section.settings.background_image != blank %}
+    style="background-image: url('{{ section.settings.background_image | image_url }}');"
+  {% endif %}
 ></div>
 <div
   class="
+    section--{{ section.id }}
     section
     section--{{ section.settings.section_width }}
     {% if section.settings.background_color != blank %}color-custom-{{ section.id }}{% endif %}
@@ -29,6 +33,18 @@
   {% content_for 'block', type: '_carousel-content', id: 'static-carousel-content', closest.product: null %}
 </div>
 
+{% style %}
+  {% if section.settings.override_background_image %}
+    .section-background {
+      background-size: contain;
+    }
+
+    .section--{{ section.id }} > div > slideshow-component > slideshow-container {
+      background: transparent;
+    }
+  {% endif %}
+{% endstyle %}
+
 {% schema %}
 {
   "name": "t:names.carousel",
@@ -36,6 +52,18 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "override_background_image",
+      "label": "Override Background Image",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "visible_if": "{{ section.settings.override_background_image }}"
+    },
     {
       "type": "range",
       "id": "columns",
