@@ -145,7 +145,15 @@
 
         <span class="deferred-media__poster-icon icon-play">
           <span class="visually-hidden">{{ 'accessibility.play_video' | t }}</span>
-          {{- 'icon-play.svg' | inline_asset_content -}}
+          {% unless block_settings.override_playbutton %}
+            {{- 'icon-play.svg' | inline_asset_content -}}
+          {% else %}
+            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="25" cy="25" r="25" fill="white" fill-opacity="0.56"/>
+              <circle cx="25" cy="25" r="20.3704" fill="white"/>
+              <path d="M20.5 17.5V32.5C20.5 33.3 21.4 33.8 22.1 33.4L34.1 25.9C34.7 25.5 34.7 24.5 34.1 24.1L22.1 16.6C21.4 16.2 20.5 16.7 20.5 17.5Z" fill="black"/>
+            </svg>
+          {% endunless %}
         </span>
       </button>
     {% endif %}
@@ -159,11 +167,28 @@
       >
         <span class="deferred-media__poster-icon icon-play hidden">
           <span class="visually-hidden">{{ 'accessibility.play_video' | t }}</span>
-          {{- 'icon-play.svg' | inline_asset_content -}}
+            {% unless block_settings.override_playbutton %}
+              {{- 'icon-play.svg' | inline_asset_content -}}
+            {% else %}
+              <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="25" cy="25" r="25" fill="white" fill-opacity="0.56"/>
+                <circle cx="25" cy="25" r="20.3704" fill="white"/>
+                <path d="M20.5 17.5V32.5C20.5 33.3 21.4 33.8 22.1 33.4L34.1 25.9C34.7 25.5 34.7 24.5 34.1 24.1L22.1 16.6C21.4 16.2 20.5 16.7 20.5 17.5Z" fill="black"/>
+              </svg>
+            {% endunless %}
         </span>
         <span class="deferred-media__poster-icon icon-pause hidden">
           <span class="visually-hidden">{{ 'accessibility.pause_video' | t }}</span>
-          {{- 'icon-pause.svg' | inline_asset_content -}}
+          {% unless block_settings.override_playbutton %}
+            {{- 'icon-pause.svg' | inline_asset_content -}}
+          {% else %}
+            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="25" cy="25" r="25" fill="white" fill-opacity="0.56"/>
+              <circle cx="25" cy="25" r="20.3704" fill="white"/>
+              <path d="M22.2224 18.5186H20.3705C19.8591 18.5186 19.4446 18.9331 19.4446 19.4445V30.5556C19.4446 31.067 19.8591 31.4815 20.3705 31.4815H22.2224C22.7337 31.4815 23.1483 31.067 23.1483 30.5556V19.4445C23.1483 18.9331 22.7337 18.5186 22.2224 18.5186Z" fill="black"/>
+              <path d="M29.6298 18.5186H27.778C27.2666 18.5186 26.8521 18.9331 26.8521 19.4445V30.5556C26.8521 31.067 27.2666 31.4815 27.778 31.4815H29.6298C30.1412 31.4815 30.5558 31.067 30.5558 30.5556V19.4445C30.5558 18.9331 30.1412 18.5186 29.6298 18.5186Z" fill="black"/>
+            </svg>
+          {% endunless %}
         </span>
       </button>
     {% endif %}
@@ -197,7 +222,15 @@
     {% endif %}
     <span class="video-placeholder-wrapper__poster-icon icon-play">
       <span class="visually-hidden">{{ 'accessibility.play_video' | t }}</span>
-      {{- 'icon-play.svg' | inline_asset_content -}}
+      {% unless block_settings.override_playbutton %}
+        {{- 'icon-play.svg' | inline_asset_content -}}
+      {% else %}
+        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="25" cy="25" r="25" fill="white" fill-opacity="0.56"/>
+          <circle cx="25" cy="25" r="20.3704" fill="white"/>
+          <path d="M20.5 17.5V32.5C20.5 33.3 21.4 33.8 22.1 33.4L34.1 25.9C34.7 25.5 34.7 24.5 34.1 24.1L22.1 16.6C21.4 16.2 20.5 16.7 20.5 17.5Z" fill="black"/>
+        </svg>
+      {% endunless %}
     </span>
   </div>
 {% endif %}

@@ -13,6 +13,7 @@
 <div
   data-testid="product-list"
   class="
+    section--{{ section.id }}
     section
     section--{{ section.settings.section_width }}
     {% if section.settings.background_color != blank %}color-custom-{{ section.id }}{% endif %}
@@ -86,6 +87,31 @@
   </div>
 </div>
 
+{% style %}
+  {% if section.settings.override_controls_position %}
+    .section--{{ section.id }} .slideshow-control {
+      position: absolute;
+      top: 30%;
+    }
+
+    .section--{{ section.id }} .slideshow-control--next {
+      right: 10px;
+    }
+
+    .section--{{ section.id }} .slideshow-control--previous {
+      left: 10px;
+    }
+  {% endif %}
+
+  {% if section.settings.override_tablet_columns_count %}
+    @media screen and (max-width: 1024px) {
+      .section--{{ section.id }} .resource-list__carousel {
+        --column-count: 2;
+      }
+    }
+  {% endif %}
+{% endstyle %}
+
 {% schema %}
 {
   "name": "t:names.product_list",
@@ -105,6 +131,19 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "override_controls_position",
+      "label": "Override Controls Position",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "override_tablet_columns_count",
+      "label": "Override Tablet Columns Count",
+      "info": "Sets Tablet Column Count to 2",
+      "default": false
+    },
     {
       "type": "collection",
       "id": "collection",

@@ -338,6 +338,17 @@
         height: var(--arrow-icon-size-small);
       }
     }
+
+    &.button-custom-primary {
+      margin: 0px;
+      --button-background-color: var(--color-accent);
+      --button-color: var(--color-text-body-light);
+      font-weight: 700;
+      @media screen and (max-width: 768px) {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
   }
 
   .email-signup__input--underline + .email-signup__button--integrated {
@@ -638,6 +649,14 @@
         {
           "value": "button-secondary",
           "label": "t:options.secondary"
+        },
+        {
+          "value": "button-custom-primary",
+          "label": "Custom Primary"
+        },
+        {
+          "value": "button-custom-secondary",
+          "label": "Custom Secondary"
         },
         {
           "value": "button-unstyled",

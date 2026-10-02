@@ -48,6 +48,216 @@
     {% endif %}
 
     {{ content_for_header }}
+
+    {% comment %} Custom Overrides {% endcomment %}
+    {% style %}
+      * {
+        /* Disable the tap highlight globally */
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      {% if settings.apply_max_width_1200 %}
+        .section {
+          max-width: 1200px;
+          justify-self: center;
+        }
+
+        header-component.header .header__row {
+          max-width: 1200px;
+          margin: auto;
+        }
+      {% endif %}
+
+      .button-custom-primary {
+        background-color: var(--color-accent);
+        border: 2px solid var(--color-accent);
+        border-radius: 24px;
+
+        padding: 14px 42px;
+
+        color: var(--color-text-body-light);
+        
+        transition: 300ms ease-out;
+
+        --arrow-color: var(--color-text-body-light);
+        
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .button-custom-primary:hover {
+        opacity: 0.8;
+        cursor: pointer;
+      }
+
+      .button-custom-secondary {
+        background-color: var(--color-background);
+        border: 2px solid var(--color-accent);
+        border-radius: 24px;
+
+        padding: 14px 42px;
+
+        color: var(--color-accent);
+        
+        transition: 300ms ease-out;
+
+        --arrow-color: var(--color-accent);
+
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .button-custom-secondary:hover {
+        background-color: var(--color-accent);
+        color: var(--color-text-body-light);
+        --arrow-color: var(--color-text-body-light);
+      }
+
+      @media screen and (max-width: 1020px) {
+        .button-custom-primary {
+          padding: 14px 7px;
+        }
+        
+        .button-custom-secondary {
+          padding: 14px 7px;
+        }
+      }
+
+      .announcement-bar__text {
+        color: var(--color-text-body-light) !important;
+      }
+
+      .announcement-bar__text > a {
+        font-weight: 700;
+      }
+
+      @media screen and (max-width: 768px) {
+        .text-block > .announcement-bar__text {
+          font-size: 11px !important;
+        }
+      }
+
+      {% if settings.apply_typography_overrides %}
+        .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner, .review-headline, .review-body, .review-customer) {
+          --color: var(--color-text-body-dark) !important;
+        }
+
+        .h1, .h2, .review-customer {
+          --color : var(--color-text-heading-dark) !important;
+        }
+
+        .h3 {
+          --color: var(--color-text-subheading-dark) !important;
+        }
+
+        .banner {
+          --color: black;
+        }
+
+        .review-headline, .review-body {
+          --color: var(--color-text-review-dark) !important;
+        }
+
+        /* Body Text */
+        .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner, .review-headline, .review-body, .review-customer) > p:not(.announcement-bar__text) {
+          font-size: 16px !important;
+        }
+
+        /* Large Heading */
+        .h1 > p {
+          font-size: 60px !important;
+          font-weight: 400 !important;
+          text-transform: uppercase !important;
+        }
+
+        /* Standard Heading */
+        .h2 > p {
+          font-size: 32px !important;
+          font-weight: 400 !important;
+          text-transform: uppercase !important;
+        }
+
+        /* Sub Heading */
+        .h3 > p {
+          font-size: 14px !important;
+          font-weight: 400 !important;
+          text-transform: uppercase !important;
+          text-decoration: underline;
+        }
+
+        /* Product Card etc Titles */
+        .h4 > p {
+          font-size: 16px !important;
+          font-weight: 500 !important;
+        }
+
+        .banner > p {
+          font-size: 13px !important;
+          font-weight: 500 !important;
+        }
+
+        .review-headline > p {
+          font-size: 16px !important;
+          font-weight: 700 !important;
+        }
+
+        .review-body > p {
+          font-size: 16px !important;
+          font-weight: 400 !important;
+        }
+        
+        .review-customer > p {
+          font-size: 16px !important;
+          font-weight: 700 !important;
+        }
+
+        @media screen and (max-width: 768px) {
+          /* Body Text */
+          .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner) > p:not(.announcement-bar__text) {
+            font-size: 14px !important;
+          }
+
+          /* Large Heading */
+          .h1 > p {
+            font-size: 40px !important;
+          }
+
+          /* Standard Heading */
+          .h2 > p {
+            font-size: 22px !important;
+          }
+
+          /* Sub Heading */
+          .h3 > p {
+            font-size: 14px !important;
+          }
+
+          /* Product Card etc Titles */
+          .h4 > p {
+            font-size: 14px !important;
+          }
+
+          .banner > p {
+            font-size: 13px !important;
+            font-weight: 500 !important;
+          }
+
+          .review-headline > p {
+            font-size: 14px !important;
+          }
+
+          .review-body > p {
+            font-size: 14px !important;
+          }
+          
+          .review-customer > p {
+            font-size: 14px !important;
+          }
+        }
+      {% endif %}
+    {% endstyle %}
   </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">

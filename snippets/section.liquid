@@ -38,8 +38,12 @@
     {% endif %}
 
     {% if section.settings.section_height != '' %}
-     --section-preview-height: 600px;
-     {% endif %}
+      --section-preview-height: 600px;
+    {% endif %}
+
+    {% if section.settings.force_overflow_hidden %}
+      overflow: hidden;
+    {% endif %}
   "
 >
   <div class="custom-section-background">
@@ -67,6 +71,8 @@
         layout-panel-flex--{{ section.settings.content_direction }}
         section-content-wrapper
         {% if section.settings.vertical_on_mobile %} mobile-column{% endif %}
+        {% if section.settings.multicolumn_carousel %}multicolumn-carousel{% endif %}
+        {% if section.settings.is_footer %}footer-section{% endif %}
       "
       style="
         {% render 'layout-panel-style', settings: section.settings %}
@@ -107,5 +113,111 @@
 
   .custom-section-content {
     z-index: var(--layer-flat);
+  }
+
+  /* Multicolumn carousel */
+  @media screen and (max-width: 1099px) {
+    .multicolumn-carousel {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+
+      width: 100%;
+      max-width: 100%;
+
+      overflow-x: auto;
+      overflow-y: hidden;
+
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+
+      /* Prevent the theme's flex variables from changing the carousel */
+      --flex-direction: row !important;
+      --flex-wrap: nowrap !important;
+      --flex-wrap-mobile: nowrap !important;
+      --horizontal-alignment: flex-start !important;
+    }
+
+    .multicolumn-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .multicolumn-carousel > .group-block {
+      flex: 0 0 calc((100% - 16px) / 3.26);
+
+      width: calc((100% - 16px) / 3.26);
+      min-width: calc((100% - 16px) / 3.26) !important;
+      max-width: calc((100% - 16px) / 3.26);
+
+      scroll-snap-align: start !important;
+      scroll-snap-stop: always !important;
+
+      /* Override the theme's size-style width */
+      --size-style-width: calc((100% - 16px) / 3.26);
+      --size-style-width-mobile: calc((100% - 16px) / 3.26);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .multicolumn-carousel {
+      gap: 32px;
+      --horizontal-alignment: flex-start !important;
+    }
+
+    .multicolumn-carousel > .group-block {
+      flex: 0 0 auto;
+
+      width: fit-content;
+      min-width: fit-content !important;
+      max-width: fit-content;
+
+      --size-style-width: 65% !important;
+      --size-style-width-mobile: 65% !important;
+    }
+
+    .multicolumn-carousel > .group-block > .group-block-content {
+      & .text-block {
+        max-width: fit-content;
+      }
+    }
+  }
+
+  /* Footer Section Styling */
+  .footer-section {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    justify-content: space-around;
+  }
+
+  .footer-section ul {
+    padding-left: 20px;
+  }
+
+  .footer-section a {
+    text-decoration: underline;
+  }
+
+  @media screen and (min-width: 768px) {
+    .footer-section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 1300px) {
+    .footer-section {
+      grid-template-columns: repeat(4, 1fr);
+
+      &>.group-block:nth-child(2 of .group-block) {
+        margin-left: 40px;
+      }
+
+      &>.group-block:nth-child(3 of .group-block) {
+        margin-left: 70px;
+      }
+    }
   }
 {% endstylesheet %}

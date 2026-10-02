@@ -223,7 +223,74 @@
   .header__underlay {
     --color-submenu: rgb({{effective_submenu_color.rgb}});
   }
+
+  /* Header Overrides */
+  {% if block_settings.override_dropdown_menu %}
+  .header__underlay {
+    --color-submenu: transparent;
+  }
+
+  .header__underlay-open::after {
+    box-shadow: none;
+  }
+
+  .menu-list__list-item {
+    position: relative;
+  }
+
+  .menu-list__list-item > .menu-list__submenu {
+    width: max-content;
+    left: 10px;
+  }
+
+  .menu-list__submenu .mega-menu {
+    grid-template-columns: 1fr;
+    width: max-content;
+    margin-inline: 0;
+    background-color: white;
+    border-radius: 10px;
+    padding: 7px;
+  }
+
+  .menu-list__submenu .mega-menu .mega-menu__grid {
+    display: flex;
+  }
+
+  .menu-list__submenu .mega-menu * {
+    border-radius: 10px;
+  }
+
+  .mega-menu__link {
+    color: black;
+    padding: 3px 6px;
+    width: 100%;
+
+    &:hover {
+      color: black;
+      background-color: #F0F0F0;
+    }
+  }
+
+  .menu-list__trigger:hover .menu-list__link-title {
+    text-decoration: underline;
+  }
+
+  .menu-list__submenu .mega-menu__grid {
+    grid-column: 1;
+    grid-template-columns: 1fr;
+    width: max-content;
+  }
+
+  .menu-list__submenu .mega-menu__column {
+    width: max-content;
+  }
+
+  .menu-list__submenu .mega-menu__link {
+    white-space: nowrap;
+  }
+  {% endif %}
 {% endstyle %}
+
 {% stylesheet %}
   .header__drawer {
     --header-drawer-min-height: 60px;
@@ -817,6 +884,13 @@
   "name": "t:names.menu",
   "tag": null,
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "override_dropdown_menu",
+      "label": "Override Dropdown Menu",
+      "info": "Overrides drop down menu styling. Use with caution.",
+      "default": true
+    },
     {
       "type": "link_list",
       "id": "menu",

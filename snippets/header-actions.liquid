@@ -31,7 +31,13 @@
       class="svg-wrapper {% if display_style != 'icon' %}desktop:hidden{% endif %}"
       aria-hidden="true"
     >
-      {{ 'icon-cart.svg' | inline_asset_content }}
+      {% unless section.settings.override_header %}
+        {{ 'icon-cart.svg' | inline_asset_content }}
+      {% else %}
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 3.22222L18.7778 11H5.86301M19.8889 15.4444H6.55556L4.33333 1H1M7.66667 19.8889C7.66667 20.5026 7.1692 21 6.55556 21C5.94191 21 5.44444 20.5026 5.44444 19.8889C5.44444 19.2752 5.94191 18.7778 6.55556 18.7778C7.1692 18.7778 7.66667 19.2752 7.66667 19.8889ZM19.8889 19.8889C19.8889 20.5026 19.3914 21 18.7778 21C18.1641 21 17.6667 20.5026 17.6667 19.8889C17.6667 19.2752 18.1641 18.7778 18.7778 18.7778C19.3914 18.7778 19.8889 19.2752 19.8889 19.8889Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      {% endunless %}
     </span>
 
     {% render 'cart-bubble', limit: 100 %}
@@ -84,6 +90,9 @@
     %}
     <div
       class="account-button header-actions__action{% if display_style == 'text' %} account-button--text{% endif %} color-custom-popover"
+      {% if section.settings.override_header %}
+        style="display: none;"
+      {% endif %}
     >
       <shopify-account
         menu="{{ customer_account_menu }}"

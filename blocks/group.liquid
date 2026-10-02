@@ -29,6 +29,20 @@
   ],
   "settings": [
     {
+      "type": "checkbox",
+      "id": "is_quiz_call_section",
+      "label": "Is Quiz Call Section",
+      "info": "Set this section as Quiz Call to Action Section, which applies styling wrt design",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "is_newsletter_section",
+      "label": "Is Newsletter Section",
+      "info": "Set this section as Newsletter signup Section, which applies width constraints",
+      "default": false
+    },
+    {
       "type": "header",
       "content": "t:content.layout"
     },
@@ -54,6 +68,27 @@
       "label": "t:settings.vertical_on_mobile",
       "default": true,
       "visible_if": "{{ block.settings.content_direction == 'row' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "reversed_on_mobile",
+      "label": "Reverse Direction on Mobile",
+      "default": false,
+      "visible_if": "{{ block.settings.vertical_on_mobile or block.settings.content_direction == 'column' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "vertical_on_tablet",
+      "label": "Vertical on Tablet",
+      "default": false,
+      "visible_if": "{{ block.settings.content_direction == 'row' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "reversed_on_tablet",
+      "label": "Reverse Direction on Tablet",
+      "default": false,
+      "visible_if": "{{ block.settings.vertical_on_tablet or block.settings.content_direction == 'column' }}"
     },
     {
       "type": "select",
