@@ -69,6 +69,19 @@
       {{ 'detailed-apparel-1' | placeholder_svg_tag: 'image-block__placeholder' }}
     </div>
   {%- endif -%}
+  {% if block_settings.use_different_image_on_mobile %}
+    {{
+      block_settings.mobile_image
+      | image_url: width: 3840
+      | image_tag:
+        width: block_settings.image.width,
+        widths: widths,
+        height: block_settings.image.height,
+        class: 'image-block__image image-block__mobile-image border-style',
+        style: image_border_style,
+        sizes: sizes
+    }}
+  {% endif %}
 {% endcapture %}
 
 {% if block_settings.link == blank %}
@@ -135,15 +148,33 @@
 
 {% style %}
   {% if block.settings.image_with_text_1_styling %}
-    .image-block--{{ block.id }} {
-      position: absolute;
-      width: 100vw;
-      height: auto;
+    @media screen and (min-width: 769px) {
+      .section:has(.image-block--{{ block.id }}) {
+        position: static;
+      }
+
+      .section:has(.image-block--{{ block.id }}) .image-block--{{ block.id }} {
+        position: absolute !important;
+        left: 0px;
+        width: 100vw;
+        height: auto;
+        z-index: 0;
+      }
+
+      .section:has(.image-block--{{ block.id }}) * {
+        position: static;
+        z-index: 99;
+      }
+
+      body:has(.image-block--{{ block.id }}) {
+        position: relative;
+      }
     }
 
     @media screen and (max-width: 768px) {
       .image-block--{{ block.id }} {
         position: relative;
+        width: 100%;
       }
     }
   {% endif %}
@@ -156,6 +187,24 @@
 
     .image-block--{{ block.id }} .image-block__image {
       z-index: 99;
+    }
+  {% endif %}
+
+  {% if block.settings.use_different_image_on_mobile %}
+    .image-block--{{ block.id }} .image-block__mobile-image {
+      display: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      .image-block--{{ block.id }} .image-block__image {
+        display: none;
+      }
+
+      .image-block--{{ block.id }} .image-block__mobile-image {
+        display: flex;
+        object-fit: cover;
+        overflow: visible;
+      }
     }
   {% endif %}
 {% endstyle %}
@@ -187,6 +236,19 @@
       "type": "image_picker",
       "id": "image",
       "label": "t:settings.image"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_different_image_on_mobile",
+      "label": "Use Different Image On Mobile",
+      "info": "Use a different image on mobile and iPad Mini",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image",
+      "visible_if": "{{ block.settings.use_different_image_on_mobile }}"
     },
     {
       "type": "url",

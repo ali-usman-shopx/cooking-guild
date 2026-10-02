@@ -38,8 +38,12 @@
     {% endif %}
 
     {% if section.settings.section_height != '' %}
-     --section-preview-height: 600px;
-     {% endif %}
+      --section-preview-height: 600px;
+    {% endif %}
+
+    {% if section.settings.force_overflow_hidden %}
+      overflow: hidden;
+    {% endif %}
   "
 >
   <div class="custom-section-background">

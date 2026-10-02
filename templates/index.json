@@ -316,6 +316,7 @@
                 "image_with_text_1_styling": false,
                 "enable_backdrop": false,
                 "image": "shopify://shop_images/hero_knives.png",
+                "use_different_image_on_mobile": false,
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "custom",
@@ -886,6 +887,7 @@
                         "image_with_text_1_styling": false,
                         "enable_backdrop": false,
                         "image": "shopify://shop_images/hero_knives.png",
+                        "use_different_image_on_mobile": false,
                         "link": "",
                         "image_ratio": "adapt",
                         "width": "custom",
@@ -1249,6 +1251,7 @@
                         "image_with_text_1_styling": false,
                         "enable_backdrop": false,
                         "image": "shopify://shop_images/hero_knives.png",
+                        "use_different_image_on_mobile": false,
                         "link": "",
                         "image_ratio": "adapt",
                         "width": "custom",
@@ -1777,6 +1780,7 @@
       "settings": {
         "multicolumn_carousel": true,
         "is_footer": false,
+        "force_overflow_hidden": false,
         "content_direction": "row",
         "vertical_on_mobile": false,
         "horizontal_alignment": "flex-start",
@@ -2280,6 +2284,7 @@
       "settings": {
         "multicolumn_carousel": true,
         "is_footer": false,
+        "force_overflow_hidden": false,
         "content_direction": "row",
         "vertical_on_mobile": false,
         "horizontal_alignment": "center",
@@ -3051,6 +3056,7 @@
                         "enable_backdrop": true,
                         "backdrop_image": "shopify://shop_images/card_hover_effect.svg",
                         "image": "{{ metaobjects.cooking_guild_testimonial[\"matthew-s\"].product_fallback_image.value }}",
+                        "use_different_image_on_mobile": false,
                         "link": "",
                         "image_ratio": "adapt",
                         "width": "fit-content",
@@ -3238,6 +3244,7 @@
                         "image_with_text_1_styling": false,
                         "enable_backdrop": false,
                         "image": "{{ metaobjects.cooking_guild_testimonial[\"matthew-s\"].review_image.value }}",
+                        "use_different_image_on_mobile": false,
                         "link": "",
                         "image_ratio": "adapt",
                         "width": "fill",
@@ -3350,6 +3357,7 @@
                         "enable_backdrop": true,
                         "backdrop_image": "shopify://shop_images/card_hover_effect.svg",
                         "image": "{{ metaobjects.cooking_guild_testimonial[\"matthew-s\"].product_fallback_image.value }}",
+                        "use_different_image_on_mobile": false,
                         "link": "",
                         "image_ratio": "adapt",
                         "width": "fit-content",
@@ -3537,6 +3545,7 @@
                         "image_with_text_1_styling": false,
                         "enable_backdrop": false,
                         "image": "{{ metaobjects.cooking_guild_testimonial[\"matthew-s\"].review_image.value }}",
+                        "use_different_image_on_mobile": false,
                         "link": "",
                         "image_ratio": "adapt",
                         "width": "fill",
@@ -3688,6 +3697,8 @@
                     "image_with_text_1_styling": true,
                     "enable_backdrop": false,
                     "image": "shopify://shop_images/image_with_text_1_bg.png",
+                    "use_different_image_on_mobile": true,
+                    "mobile_image": "shopify://shop_images/image_with_text_1_bg_5287b430-f5f7-4b93-8d62-052be828cb38.png",
                     "link": "",
                     "image_ratio": "adapt",
                     "width": "fill",
@@ -3815,7 +3826,7 @@
                   "settings": {
                     "text": "<p>We hold the knives we sell to a very high quality standard. We truly believe that a high quality knife changes the cooking experience. After using a dull knife for many years, I couldn’t believe the difference when I finally switched. Chopping, slicing and preparing ingredients is so much more satisfying with a screamingly sharp, well-balanced and high quality knife.</p><p><br/> We have gone the extra mile with every handcrafted detail on these knives, from the hammer-forged high carbon steel to the ancient fire quenching techniques. The process creates the natural pattern and texture on the blade - making each knife completely unique. When you hold the knife in your hand for the first time - the quality is unmistakable.</p>",
                     "width": "fit-content",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "paragraph",
                     "font": "var(--font-body--family)",
@@ -3957,6 +3968,7 @@
       "settings": {
         "multicolumn_carousel": false,
         "is_footer": false,
+        "force_overflow_hidden": true,
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
@@ -4461,6 +4473,7 @@
       "settings": {
         "multicolumn_carousel": true,
         "is_footer": false,
+        "force_overflow_hidden": false,
         "content_direction": "row",
         "vertical_on_mobile": false,
         "horizontal_alignment": "center",
@@ -4972,6 +4985,7 @@
       "settings": {
         "multicolumn_carousel": false,
         "is_footer": false,
+        "force_overflow_hidden": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
@@ -5331,6 +5345,7 @@
                     "image_with_text_1_styling": false,
                     "enable_backdrop": false,
                     "image": "shopify://shop_images/image_with_text_2.png",
+                    "use_different_image_on_mobile": false,
                     "link": "",
                     "image_ratio": "adapt",
                     "width": "fill",
@@ -5369,6 +5384,7 @@
       "settings": {
         "multicolumn_carousel": false,
         "is_footer": false,
+        "force_overflow_hidden": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
@@ -5861,6 +5877,7 @@
       "settings": {
         "multicolumn_carousel": false,
         "is_footer": false,
+        "force_overflow_hidden": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
@@ -6201,6 +6218,7 @@
       "settings": {
         "multicolumn_carousel": false,
         "is_footer": false,
+        "force_overflow_hidden": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
@@ -6491,6 +6509,7 @@
       "settings": {
         "multicolumn_carousel": false,
         "is_footer": false,
+        "force_overflow_hidden": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
@@ -7010,6 +7029,7 @@
       "settings": {
         "multicolumn_carousel": false,
         "is_footer": false,
+        "force_overflow_hidden": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",

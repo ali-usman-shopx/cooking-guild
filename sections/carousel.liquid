@@ -33,6 +33,15 @@
   {% content_for 'block', type: '_carousel-content', id: 'static-carousel-content', closest.product: null %}
 </div>
 
+{% stylesheet %}
+  .section:has(.hero-carousel) {
+    @media screen and (max-width: 768px) {
+      padding-block-start: 0px;
+      margin-top: -15px;
+    }
+  }
+{% endstylesheet %}
+
 {% style %}
   {% if section.settings.override_background_image %}
     .section-background {

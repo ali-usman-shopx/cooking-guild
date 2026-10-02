@@ -56,6 +56,18 @@
         -webkit-tap-highlight-color: transparent;
       }
 
+      {% if settings.apply_max_width_1200 %}
+        .section {
+          max-width: 1200px;
+          justify-self: center;
+        }
+
+        header-component.header .header__row {
+          max-width: 1200px;
+          margin: auto;
+        }
+      {% endif %}
+
       .button-custom-primary {
         background-color: var(--color-accent);
         border: 2px solid var(--color-accent);
@@ -149,7 +161,7 @@
         }
 
         /* Body Text */
-        .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner, .review-headline, .review-body, .review-customer) > p {
+        .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner, .review-headline, .review-body, .review-customer) > p:not(.announcement-bar__text) {
           font-size: 16px !important;
         }
 
@@ -203,7 +215,7 @@
 
         @media screen and (max-width: 768px) {
           /* Body Text */
-          .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner) > p {
+          .text-block:not(.custom, .h1, .h2, .h3, .h4, .h5, .h6, .banner) > p:not(.announcement-bar__text) {
             font-size: 14px !important;
           }
 
