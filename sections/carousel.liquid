@@ -36,7 +36,9 @@
 {% style %}
   {% if section.settings.override_background_image %}
     .section-background {
-      background-size: contain;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .section--{{ section.id }} > div > slideshow-component > slideshow-container {
