@@ -32,13 +32,23 @@
   {% if block_settings.enable_faq_styling %}
     .accordion--{{ block.id }} .details {
       padding: 36px 23px;
-      transition: 
-        border 0ms linear 200ms,
-        all 200ms ease-out;
+
+      /* We must use box-shadow to prevent the border from curving with border-radius */
+      border: none !important;
+      box-shadow: 0 -1px 0 0 #C5C5C5;
+      
+      transition: 200ms ease-out;
+    }
+
+    /* The last row of the accordion needs a border (box shadow) on top and bottom */
+    .accordion--{{ block.id }} > accordion-custom:last-child > .details {
+      box-shadow:
+        0 -1px 0 0 #C5C5C5,
+        0 1px 0 0 #C5C5C5;
     }
 
     .accordion--{{ block.id }} .details .details__header {
-      padding: 0px;
+      padding: 6px 0px;
       font-size: 20px;
       font-weight: 400;
       letter-spacing: 1px;
@@ -51,7 +61,7 @@
 
     .accordion--{{ block.id }} .details[open] {
       background-color: #2A2A2A;
-      border: none !important;
+      box-shadow: none !important;
       border-radius: 8px;
       margin-bottom: 5px;
     }
@@ -70,7 +80,12 @@
 
     /* Target and style the sibling of the open details FAQ element */
     .accordion--{{ block.id }} accordion-custom:has(.details[open]) + accordion-custom .details {
-      border: none !important;
+      box-shadow: none;
+    }
+
+    /* If the next element is the last accordion row, then its border bottom (box shadow) should remain visible */
+    .accordion--{{ block.id }} accordion-custom:has(.details[open]) + accordion-custom:last-child .details {
+      box-shadow: 0 1px 0 0 #C5C5C5;
     }
 
     .accordion--{{ block.id }} .details .details-content {
