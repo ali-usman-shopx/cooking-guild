@@ -75,6 +75,7 @@
           "type": "_header-menu",
           "static": true,
           "settings": {
+            "override_dropdown_menu": true,
             "menu": "main-menu",
             "background_color": "{{ settings.color_palette.background }}",
             "text_color": "",
@@ -97,6 +98,7 @@
         }
       },
       "settings": {
+        "override_header": true,
         "logo_position": "left",
         "menu_position": "right",
         "menu_row": "top",
@@ -127,9 +129,9 @@
         "text_color_top": "",
         "background_color_bottom": "",
         "text_color_bottom": "",
-        "bubble_style": "default",
-        "bubble_background_color": "",
-        "bubble_text_color": "",
+        "bubble_style": "custom",
+        "bubble_background_color": "#EF4444",
+        "bubble_text_color": "{{ settings.color_palette.foreground }}",
         "enable_transparent_header_home": false,
         "home_inverse_logo": false,
         "text_color_transparent_home": "",
