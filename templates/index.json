@@ -17,6 +17,7 @@
           "name": "Carousel Slide Wrapper",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": true,
@@ -62,6 +63,7 @@
               "name": "t:names.group",
               "settings": {
                 "is_quiz_call_section": false,
+                "quiz_tag_text": "TRY FREE SURVEY",
                 "is_newsletter_section": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
@@ -185,6 +187,7 @@
                   "name": "buttons",
                   "settings": {
                     "is_quiz_call_section": false,
+                    "quiz_tag_text": "TRY FREE SURVEY",
                     "is_newsletter_section": false,
                     "content_direction": "row",
                     "vertical_on_mobile": false,
@@ -462,6 +465,7 @@
           "static": true,
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -588,6 +592,7 @@
                   "name": "Carousel Slide Wrapper",
                   "settings": {
                     "is_quiz_call_section": false,
+                    "quiz_tag_text": "TRY FREE SURVEY",
                     "is_newsletter_section": false,
                     "content_direction": "row",
                     "vertical_on_mobile": true,
@@ -633,6 +638,7 @@
                       "name": "t:names.group",
                       "settings": {
                         "is_quiz_call_section": false,
+                        "quiz_tag_text": "TRY FREE SURVEY",
                         "is_newsletter_section": false,
                         "content_direction": "column",
                         "vertical_on_mobile": true,
@@ -756,6 +762,7 @@
                           "name": "buttons",
                           "settings": {
                             "is_quiz_call_section": false,
+                            "quiz_tag_text": "TRY FREE SURVEY",
                             "is_newsletter_section": false,
                             "content_direction": "row",
                             "vertical_on_mobile": false,
@@ -952,6 +959,7 @@
                   "name": "Carousel Slide Wrapper",
                   "settings": {
                     "is_quiz_call_section": false,
+                    "quiz_tag_text": "TRY FREE SURVEY",
                     "is_newsletter_section": false,
                     "content_direction": "row",
                     "vertical_on_mobile": true,
@@ -997,6 +1005,7 @@
                       "name": "t:names.group",
                       "settings": {
                         "is_quiz_call_section": false,
+                        "quiz_tag_text": "TRY FREE SURVEY",
                         "is_newsletter_section": false,
                         "content_direction": "column",
                         "vertical_on_mobile": true,
@@ -1120,6 +1129,7 @@
                           "name": "buttons",
                           "settings": {
                             "is_quiz_call_section": false,
+                            "quiz_tag_text": "TRY FREE SURVEY",
                             "is_newsletter_section": false,
                             "content_direction": "row",
                             "vertical_on_mobile": false,
@@ -1312,6 +1322,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -1404,6 +1415,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -1496,6 +1508,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -1588,6 +1601,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -1680,6 +1694,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -1817,6 +1832,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -1909,6 +1925,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -2001,6 +2018,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -2093,6 +2111,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -2185,6 +2204,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -2648,6 +2668,7 @@
           "name": "t:names.header",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -2855,6 +2876,7 @@
           "static": true,
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "column",
             "vertical_on_mobile": false,
@@ -3008,6 +3030,7 @@
                   "name": "t:names.group",
                   "settings": {
                     "is_quiz_call_section": false,
+                    "quiz_tag_text": "TRY FREE SURVEY",
                     "is_newsletter_section": false,
                     "content_direction": "column",
                     "vertical_on_mobile": true,
@@ -3197,6 +3220,7 @@
                   "name": "t:names.group",
                   "settings": {
                     "is_quiz_call_section": false,
+                    "quiz_tag_text": "TRY FREE SURVEY",
                     "is_newsletter_section": false,
                     "content_direction": "column",
                     "vertical_on_mobile": true,
@@ -3309,6 +3333,7 @@
                   "name": "t:names.group",
                   "settings": {
                     "is_quiz_call_section": false,
+                    "quiz_tag_text": "TRY FREE SURVEY",
                     "is_newsletter_section": false,
                     "content_direction": "column",
                     "vertical_on_mobile": true,
@@ -3498,6 +3523,7 @@
                   "name": "t:names.group",
                   "settings": {
                     "is_quiz_call_section": false,
+                    "quiz_tag_text": "TRY FREE SURVEY",
                     "is_newsletter_section": false,
                     "content_direction": "column",
                     "vertical_on_mobile": true,
@@ -3605,6 +3631,7 @@
           "name": "t:names.group",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": true,
@@ -3650,6 +3677,7 @@
               "name": "t:names.group",
               "settings": {
                 "is_quiz_call_section": false,
+                "quiz_tag_text": "TRY FREE SURVEY",
                 "is_newsletter_section": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
@@ -3728,6 +3756,7 @@
               "name": "t:names.group",
               "settings": {
                 "is_quiz_call_section": false,
+                "quiz_tag_text": "TRY FREE SURVEY",
                 "is_newsletter_section": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
@@ -3851,6 +3880,7 @@
                   "name": "buttons",
                   "settings": {
                     "is_quiz_call_section": false,
+                    "quiz_tag_text": "TRY FREE SURVEY",
                     "is_newsletter_section": false,
                     "content_direction": "row",
                     "vertical_on_mobile": false,
@@ -4006,6 +4036,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -4098,6 +4129,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -4190,6 +4222,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -4282,6 +4315,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -4374,6 +4408,7 @@
           "name": "t:names.column",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -4510,6 +4545,7 @@
           "name": "t:names.group",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -4801,6 +4837,7 @@
           "name": "Quiz Container",
           "settings": {
             "is_quiz_call_section": true,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -5022,6 +5059,7 @@
           "name": "t:names.group",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": true,
@@ -5067,6 +5105,7 @@
               "name": "t:names.group",
               "settings": {
                 "is_quiz_call_section": false,
+                "quiz_tag_text": "TRY FREE SURVEY",
                 "is_newsletter_section": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
@@ -5190,6 +5229,7 @@
                   "name": "buttons",
                   "settings": {
                     "is_quiz_call_section": false,
+                    "quiz_tag_text": "TRY FREE SURVEY",
                     "is_newsletter_section": false,
                     "content_direction": "row",
                     "vertical_on_mobile": false,
@@ -5298,6 +5338,7 @@
               "name": "t:names.group",
               "settings": {
                 "is_quiz_call_section": false,
+                "quiz_tag_text": "TRY FREE SURVEY",
                 "is_newsletter_section": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
@@ -5749,6 +5790,7 @@
           "name": "t:names.video",
           "settings": {
             "override_playbutton": true,
+            "disable_controls": true,
             "source": "uploaded",
             "video": "shopify://files/videos/Screen Recording 2026-09-23 at 12.39.04 PM.mov",
             "video_url": "https://youtu.be/o5XyD-mdjaM?si=X4eXycmt5ln5TfYT",
@@ -5777,6 +5819,7 @@
           "disabled": true,
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "row",
             "vertical_on_mobile": true,
@@ -5915,6 +5958,7 @@
           "name": "t:names.header",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -6113,6 +6157,7 @@
           "name": "t:names.header",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -6407,6 +6452,7 @@
           "name": "t:names.group",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -6574,6 +6620,7 @@
           "name": "t:names.header",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -6677,6 +6724,7 @@
           "name": "t:names.accordion",
           "settings": {
             "enable_faq_styling": true,
+            "constrain_accordion": true,
             "icon": "caret",
             "dividers": true,
             "divider_color": "",
@@ -6924,6 +6972,7 @@
           "name": "Buttons",
           "settings": {
             "is_quiz_call_section": false,
+            "quiz_tag_text": "TRY FREE SURVEY",
             "is_newsletter_section": false,
             "content_direction": "column",
             "vertical_on_mobile": true,

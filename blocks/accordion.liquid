@@ -9,7 +9,14 @@
 %}
 
 <div
-  class="accordion accordion--{{ block.id }} accordion--{{ block_settings.icon }} border-style spacing-style{% if block_settings.background_color != blank or block_settings.text_color != blank %} color-custom-{{ block.id }}{% endif %}{% if block_settings.background_color != blank %} accordion--custom-background{% endif %}{% if block_settings.dividers %} accordion--dividers{% endif %}"
+  class="
+    accordion accordion--{{ block.id }}
+    accordion--{{ block_settings.icon }}
+    border-style
+    spacing-style{% if block_settings.background_color != blank or block_settings.text_color != blank %}color-custom-{{ block.id }}{% endif %}
+    {% if block_settings.background_color != blank %} accordion--custom-background{% endif %}
+    {% if block_settings.dividers %} accordion--dividers{% endif %}
+    {% if block_settings.constrain_accordion %} constrained-accordion{% endif %}"
   style="
     --summary-font-family: var(--font-{{ block_settings.type_preset }}--family);
      --summary-font-style: var(--font-{{ block_settings.type_preset }}--style);
@@ -136,6 +143,13 @@
       "label": "Enable FAQ Styling",
       "info": "Applies FAQ Accordion Styling as per design.",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "constrain_accordion",
+      "label": "Constrain Accordion",
+      "info": "Constrains the accordion to open only 1 row at a time.",
+      "default": false
     },
     {
       "type": "select",
