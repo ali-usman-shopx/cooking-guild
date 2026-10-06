@@ -469,6 +469,64 @@
   type="module"
 ></script>
 
+{% style %}
+  /* Header Overrides */
+  {% if section.settings.override_header %}
+  .header__row {
+    padding-top: 7px;
+  }
+
+  .header__icon {
+    padding: 0px !important;
+    width: 30px;
+    height: 30px;
+  }
+
+  .header__icon > .svg-wrapper {
+    width: 30px;
+    height: 30px;
+  }
+
+  @media screen and (min-width: 1026px) {
+    .search-action {
+      padding-left: 20px;
+      padding-right: 15px;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1025px) {
+    .header__columns {
+      padding-inline: 10px !important;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .header__row {
+      padding-top: 9px;
+    }
+
+    .header-logo {
+      grid-area: leftA !important;
+      width: 143px;
+    }
+
+    .header__drawer {
+      grid-area: rightB !important;
+    }
+
+    #header-component[data-menu-style=drawer] .header__columns header-actions {
+      grid-area: rightA;
+      margin-right: 12px;
+    }
+
+    .search-action {
+      position: absolute !important;
+      right: 105px;
+    }
+  }
+  {% endif %}
+{% endstyle %}
+
 {% stylesheet %}
   body {
     --header-height: 60px;
@@ -1200,6 +1258,13 @@
   "tag": "header",
   "class": "header-section",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "override_header",
+      "label": "Override Header",
+      "info": "Overrides header styling including drop down menus and icons. Pair with other settings with caution.",
+      "default": true
+    },
     {
       "type": "header",
       "content": "t:content.logo"

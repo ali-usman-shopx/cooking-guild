@@ -13,8 +13,10 @@
   {{ block.shopify_attributes }}
 >
   <span class="footer-utilities__text">
+    Copyright
     &copy; {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url -}}
+    {{ shop.name | link_to: routes.root_url -}}.
+    All Rights Reserved
     {%- if block_settings.show_powered_by -%}
       , {{ powered_by_link }}
     {%- endif -%}
@@ -24,6 +26,8 @@
 {% stylesheet %}
   .footer-utilities__group-copyright {
     color: var(--color-utilities, var(--color-foreground-muted));
+    font-size: 14px;
+    font-weight: 700;
   }
 {% endstylesheet %}
 

@@ -97,6 +97,16 @@
   }
 {% endstylesheet %}
 
+{% style %}
+  {% if section.settings.center_elements %}
+    .utilities {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  {% endif %}
+{% endstyle %}
+
 {% schema %}
 {
   "name": "t:names.policies_and_links",
@@ -107,6 +117,12 @@
     "groups": ["footer"]
   },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "center_elements",
+      "label": "Centered Elements",
+      "default": true
+    },
     {
       "type": "select",
       "id": "section_width",

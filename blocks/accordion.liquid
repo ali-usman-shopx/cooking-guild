@@ -9,7 +9,14 @@
 %}
 
 <div
-  class="accordion accordion--{{ block.id }} accordion--{{ block_settings.icon }} border-style spacing-style{% if block_settings.background_color != blank or block_settings.text_color != blank %} color-custom-{{ block.id }}{% endif %}{% if block_settings.background_color != blank %} accordion--custom-background{% endif %}{% if block_settings.dividers %} accordion--dividers{% endif %}"
+  class="
+    accordion accordion--{{ block.id }}
+    accordion--{{ block_settings.icon }}
+    border-style
+    spacing-style{% if block_settings.background_color != blank or block_settings.text_color != blank %}color-custom-{{ block.id }}{% endif %}
+    {% if block_settings.background_color != blank %} accordion--custom-background{% endif %}
+    {% if block_settings.dividers %} accordion--dividers{% endif %}
+    {% if block_settings.constrain_accordion %} constrained-accordion{% endif %}"
   style="
     --summary-font-family: var(--font-{{ block_settings.type_preset }}--family);
      --summary-font-style: var(--font-{{ block_settings.type_preset }}--style);
@@ -28,6 +35,97 @@
 
 {% render 'accordion-styles' %}
 
+{% style %}
+  {% if block_settings.enable_faq_styling %}
+    .accordion--{{ block.id }} .details {
+      padding: 36px 23px;
+
+      /* We must use box-shadow to prevent the border from curving with border-radius */
+      border: none !important;
+      box-shadow: 0 -2px 0 -1px #C5C5C5;
+      
+      transition: 200ms ease-out;
+    }
+
+    /* The last row of the accordion needs a border (box shadow) on top and bottom */
+    .accordion--{{ block.id }} > accordion-custom:last-child > .details {
+      box-shadow:
+        0 -2px 0 -1px #C5C5C5,
+        0 2px 0 -1px #C5C5C5;
+    }
+
+    .accordion--{{ block.id }} .details .details__header {
+      padding: 6px 0px;
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .accordion--{{ block.id }} .details .details__header .svg-wrapper {
+      width: 24px;
+      height: 24px;
+    }
+
+    .accordion--{{ block.id }} .details[open] {
+      background-color: #2A2A2A;
+      box-shadow: none !important;
+      border-radius: 8px;
+      margin-bottom: 5px;
+    }
+
+    .accordion--{{ block.id }} .details[open] .details__header {
+      font-weight: 600;
+    }
+
+    .accordion--{{ block.id }} .details[open] .details__header .svg-wrapper {
+      transform: rotateZ(45deg);
+    }
+
+    .accordion--{{ block.id }} .details[open] .details__header .svg-wrapper > rect {
+      fill: #C09F6E;
+    }
+
+    /* Target and style the sibling of the open details FAQ element */
+    .accordion--{{ block.id }} accordion-custom:has(.details[open]) + accordion-custom .details {
+      box-shadow: none;
+    }
+
+    /* If the next element is the last accordion row, then its border bottom (box shadow) should remain visible */
+    .accordion--{{ block.id }} accordion-custom:has(.details[open]) + accordion-custom:last-child .details {
+      box-shadow: 0 2px 0 -1px #C5C5C5;
+    }
+
+    .accordion--{{ block.id }} .details .details-content {
+      padding-left: 31px;
+      padding-right: 31px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .accordion--{{ block.id }} .details {
+        padding: 30px 20px;
+      }
+
+      .accordion--{{ block.id }} .details .details__header {
+        padding: 0px;
+        font-size: 16px;
+        align-items: flex-start;
+      }
+
+      .accordion--{{ block.id }} .details .details__header .svg-wrapper {
+        width: 18px;
+        height: 18px;
+        min-width: 18px;
+        min-width: 18px;
+      }
+
+      .accordion--{{ block.id }} .details .details-content {
+        padding-left: 27px;
+        padding-right: 27px;
+      }
+    }
+  {% endif %}
+{% endstyle %}
+
 {% schema %}
 {
   "name": "t:names.accordion",
@@ -39,6 +137,20 @@
     }
   ],
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_faq_styling",
+      "label": "Enable FAQ Styling",
+      "info": "Applies FAQ Accordion Styling as per design.",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "constrain_accordion",
+      "label": "Constrain Accordion",
+      "info": "Constrains the accordion to open only 1 row at a time.",
+      "default": false
+    },
     {
       "type": "select",
       "id": "icon",

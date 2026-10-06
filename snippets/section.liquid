@@ -38,8 +38,12 @@
     {% endif %}
 
     {% if section.settings.section_height != '' %}
-     --section-preview-height: 600px;
-     {% endif %}
+      --section-preview-height: 600px;
+    {% endif %}
+
+    {% if section.settings.force_overflow_hidden %}
+      overflow: hidden;
+    {% endif %}
   "
 >
   <div class="custom-section-background">
@@ -53,7 +57,11 @@
   </div>
 
   <div
-    class="border-style custom-section-content"
+    class="
+      border-style
+      custom-section-content
+      {% if section.settings.multicolumn_carousel %}multicolumn-carousel-wrapper{% endif %}
+      "
     style="{% render 'border-override', settings: section.settings %}"
   >
     {% if section.settings.toggle_overlay %}
@@ -67,6 +75,8 @@
         layout-panel-flex--{{ section.settings.content_direction }}
         section-content-wrapper
         {% if section.settings.vertical_on_mobile %} mobile-column{% endif %}
+        {% if section.settings.multicolumn_carousel %}multicolumn-carousel{% endif %}
+        {% if section.settings.is_footer %}footer-section{% endif %}
       "
       style="
         {% render 'layout-panel-style', settings: section.settings %}
@@ -76,6 +86,42 @@
     >
       {{ children }}
     </div>
+
+    {% if section.settings.multicolumn_carousel %}
+      <button
+        type="button"
+        class="multicolumn-carousel__chevron multicolumn-carousel__chevron--left"
+        aria-label="Previous slide"
+        data-carousel-direction="prev"
+      >
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path
+            d="M15 5L8 12L15 19"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        class="multicolumn-carousel__chevron multicolumn-carousel__chevron--right"
+        aria-label="Next slide"
+        data-carousel-direction="next"
+      >
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path
+            d="M9 5L16 12L9 19"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    {% endif %}
   </div>
 </div>
 
@@ -108,4 +154,163 @@
   .custom-section-content {
     z-index: var(--layer-flat);
   }
+
+  /* Multicolumn carousel */
+  .multicolumn-carousel-wrapper {
+    position: relative;
+  }
+
+  .multicolumn-carousel__chevron {
+    display: none;
+  }
+
+  .multicolumn-carousel__chevron:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  @media screen and (max-width: 1099px) {
+    .multicolumn-carousel-wrapper:has(.multicolumn-carousel) {
+      position: relative;
+    }
+
+    .multicolumn-carousel__chevron {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+
+      padding: 0;
+      border: none;
+      appearance: none;
+      -webkit-appearance: none;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 36px;
+      height: 36px;
+
+      color: rgb(var(--color-foreground-rgb));
+      background: rgb(var(--color-background-rgb) / 0.9);
+      border-radius: 50%;
+
+      transform: translateY(-50%);
+    }
+
+    .multicolumn-carousel__chevron svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .multicolumn-carousel__chevron--left {
+      left: 8px;
+    }
+
+    .multicolumn-carousel__chevron--right {
+      right: 8px;
+    }
+  }
+
+  @media screen and (max-width: 1099px) {
+    .multicolumn-carousel {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+
+      width: 100%;
+      max-width: 100%;
+
+      overflow-x: auto;
+      overflow-y: hidden;
+
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+
+      /* Prevent the theme's flex variables from changing the carousel */
+      --flex-direction: row !important;
+      --flex-wrap: nowrap !important;
+      --flex-wrap-mobile: nowrap !important;
+      --horizontal-alignment: flex-start !important;
+    }
+
+    .multicolumn-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .multicolumn-carousel > .group-block {
+      flex: 0 0 calc((100% - 16px) / 3.26);
+
+      width: calc((100% - 16px) / 3.26);
+      min-width: calc((100% - 16px) / 3.26) !important;
+      max-width: calc((100% - 16px) / 3.26);
+
+      scroll-snap-align: start !important;
+      scroll-snap-stop: always !important;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .multicolumn-carousel {
+      gap: 32px;
+      --horizontal-alignment: flex-start !important;
+    }
+
+    .multicolumn-carousel > .group-block {
+      flex: 0 0 auto;
+
+      width: 100%;
+      min-width: 100% !important;
+      max-width: 100%;
+    }
+
+    .multicolumn-carousel > .group-block > .group-block-content {
+      & .text-block {
+        max-width: fit-content;
+      }
+    }
+  }
+
+  /* Footer Section Styling */
+  .footer-section {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    justify-content: space-around;
+  }
+
+  .footer-section ul {
+    padding-left: 20px;
+  }
+
+  .footer-section a {
+    text-decoration: underline;
+  }
+
+  @media screen and (min-width: 768px) {
+    .footer-section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 1300px) {
+    .footer-section {
+      grid-template-columns: repeat(4, 1fr);
+
+      &>.group-block:nth-child(2 of .group-block) {
+        margin-left: 40px;
+      }
+
+      &>.group-block:nth-child(3 of .group-block) {
+        margin-left: 70px;
+      }
+    }
+  }
 {% endstylesheet %}
+
+{% if section.settings.multicolumn_carousel %}
+  <script src="{{ 'multicolumn-carousel.js' | asset_url }}" defer></script>
+{% endif %}

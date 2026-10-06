@@ -39,7 +39,7 @@
 %}
 
 <product-price
-  class="text-block {{ text_block_classes }} text-{{ block_settings.alignment }} {{ block_settings.type_preset | default: 'paragraph' }} spacing-style"
+  class="price-container--{{ block.id }} text-block {{ text_block_classes }} text-{{ block_settings.alignment }} {{ block_settings.type_preset | default: 'paragraph' }} spacing-style"
   data-block-id="{{ block.id }}"
   data-product-id="{{ product_resource.id }}"
   style="
@@ -92,11 +92,37 @@
 
 {% render 'payment-terms-styles' %}
 
+{% style %}
+  {% if block.settings.apply_styling_overrides %}
+    .price-container--{{ block.id }} {
+      padding-bottom: 2px;
+    }
+    
+    .price-container--{{ block.id }} .price {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    
+    .price-container--{{ block.id }} .compare-at-price {
+      font-size: 14px;
+      font-weight: 500;
+      color: #929292;
+    }
+  {% endif %}
+{% endstyle %}
+
 {% schema %}
 {
   "name": "t:names.product_price",
   "tag": null,
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "apply_styling_overrides",
+      "label": "Apply Styling Overrides",
+      "info": "Applies Styling Overrides wrt Design",
+      "default": false
+    },
     {
       "type": "paragraph",
       "content": "t:content.resource_reference_product_price"

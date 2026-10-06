@@ -12,13 +12,20 @@
 {% endif %}
 
 {% capture icon %}
-  {% render 'icon-or-image',
-    icon: block_settings.icon,
-    image_upload: block_settings.image_upload,
-    width: block_settings.width,
-    class_name: icon_block_class,
-    attributes: block.shopify_attributes
-  %}
+  {%if block_settings.is_custom_social_media_icon %}
+    {% comment %}
+      Remember, renderer is responsible for the sizing of the custom-icon-wrapper.
+    {% endcomment %}
+    {% render 'custom-icon-social-media', social_media_type: block_settings.social_media_type %}
+  {% else %}
+    {% render 'icon-or-image',
+      icon: block_settings.icon,
+      image_upload: block_settings.image_upload,
+      width: block_settings.width,
+      class_name: icon_block_class,
+      attributes: block.shopify_attributes
+    %}
+  {% endif %}
 {% endcapture %}
 
 {%- if block_settings.link != blank -%}
@@ -46,11 +53,47 @@
   }
 {% endstylesheet %}
 
+{% style %}
+  {% if block.settings.is_custom_social_media_icon %}
+    .custom-icon-wrapper {
+      width: {{ block.settings.width }};
+      height: {{ block.settings.height }};
+    }
+  {% endif %}
+{% endstyle %}
+
 {% schema %}
 {
   "name": "t:names.icon",
   "class": "icon-block",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "is_custom_social_media_icon",
+      "label": "Is Custom Social Media Icon",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "social_media_type",
+      "label": "Social Media",
+      "visible_if": "{{ block.settings.is_custom_social_media_icon }}",
+      "options": [
+        {
+          "value": "facebook",
+          "label": "facebook"
+        },
+        {
+          "value": "linkedin",
+          "label": "linkedin"
+        },
+        {
+          "value": "twitter",
+          "label": "twitter"
+        }
+      ],
+      "default": "facebook"
+    },
     {
       "type": "select",
       "id": "icon",

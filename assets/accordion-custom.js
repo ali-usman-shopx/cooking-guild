@@ -43,6 +43,7 @@ class AccordionCustom extends HTMLElement {
     this.addEventListener('keydown', this.#handleKeyDown, { signal });
     this.summary.addEventListener('click', this.handleClick, { signal });
     this.details.addEventListener('click', this.#handleContentClick, { signal });
+    this.details.addEventListener('toggle', this.#handleToggle, { signal });
     mediaQueryLarge.addEventListener('change', this.#handleMediaQueryChange, { signal });
   }
 
@@ -117,6 +118,31 @@ class AccordionCustom extends HTMLElement {
       this.details.open = false;
     }
   }
+
+  // This function is responsible for closing opened rows when a different row is opened.
+  // It looks for a specific class on the container element, a class that is conditionally applied on the element via liquid.
+  // The class's condition is defined in accordion.liquid block, please refer to it.
+  // If multiple accordions have that class, it should only affect the direct siblings and hence won't affect the other accordions
+  //   with the same class.
+  #handleToggle = () => {
+    if (!this.details.open) return;
+
+    const group = this.closest('.constrained-accordion');
+
+    if (!group) return;
+
+    requestAnimationFrame(() => {
+      group.querySelectorAll('accordion-custom').forEach((accordion) => {
+        if (accordion === this) return;
+
+        const details = accordion.querySelector('details');
+
+        if (details?.open) {
+          details.open = false;
+        }
+      });
+    });
+  };
 }
 
 if (!customElements.get('accordion-custom')) {

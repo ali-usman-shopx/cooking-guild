@@ -60,7 +60,7 @@
 %}
 
 <product-card
-  class="product-card size-style"
+  class="product-card--{{ block.id }} product-card size-style"
   style="{% render 'size-style', settings: block_settings %}"
   data-product-id="{{ product.id }}"
   id="product-card-{{ block.id }}"
@@ -113,6 +113,21 @@
       {% if block_settings.padding-block-end > 0 %}--zoom-out-padding-block-end: min(var(--padding-xs), {{ block_settings.padding-block-end | times: 0.7}}px);{% endif %}
     "
   >
+    {% if block.settings.apply_custom_style %}
+      <div class="hover-image-wrapper">
+        {{
+            block.settings.hover_image
+            | image_url: width: 400
+            | image_tag:
+            loading: 'lazy',
+            class: 'product-card-hover-image'
+        }}
+      </div>
+
+      <span class="best-selling-badge">
+        Best Selling
+      </span>
+    {% endif %}
     {{ children }}
   </div>
 </product-card>

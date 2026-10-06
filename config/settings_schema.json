@@ -64,7 +64,15 @@
         "id": "color_palette",
         "default": {
           "background": "#ffffff",
-          "foreground": "#000000"
+          "foreground": "#000000",
+          "accent": "#CEAF78",
+          "text_heading_dark": "#CEAF78",
+          "text_heading_light": "#000000",
+          "text_subheading_dark": "#FFFFFF",
+          "text_subheading_light": "#000000",
+          "text_body_dark": "#FFFFFF",
+          "text_body_light": "#000000",
+          "text_review_dark": "#E4E4E4"
         }
       }
     ]
@@ -72,6 +80,13 @@
   {
     "name": "t:names.typography",
     "settings": [
+      {
+        "type": "checkbox",
+        "id": "apply_typography_overrides",
+        "label": "Apply Typography Overrides",
+        "info": "This overrides the typography settings like font size, weight, decoration. These will override theme settings.",
+        "default": true
+      },
       {
         "type": "header",
         "content": "t:content.colors"
@@ -1105,6 +1120,13 @@
         "id": "page_background_color",
         "label": "t:settings.page_background_color",
         "default": "{{ settings.color_palette.background }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "apply_max_width_1200",
+        "label": "Apply Max Width 1200px",
+        "info": "Constrains the page to be at most 1200px wide",
+        "default": true
       },
       {
         "type": "select",

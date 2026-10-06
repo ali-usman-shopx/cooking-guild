@@ -17,13 +17,20 @@
         width: block_settings.width,
         class_name: 'details__icon'
       %}
+      {% if block_settings.enable_indexing %}
+        <span class="accordion-index">{{ block_settings.accordion_index | prepend: '0' | slice: -2, 2 }}</span>
+      {% endif %}
       {{ block_settings.heading }}
-      <span class="svg-wrapper icon-caret icon-animated">
-        {{- 'icon-caret.svg' | inline_asset_content -}}
-      </span>
-      <span class="svg-wrapper icon-plus">
-        {{- 'icon-plus.svg' | inline_asset_content -}}
-      </span>
+      {% if block_settings.use_custom_open_close_icon %}
+        {% render 'custom-icon-open-close' %}
+      {% else %}
+        <span class="svg-wrapper icon-caret icon-animated">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+        <span class="svg-wrapper icon-plus">
+          {{- 'icon-plus.svg' | inline_asset_content -}}
+        </span>
+      {% endif %}
     </summary>
 
     <div class="details-content">
@@ -50,6 +57,28 @@
     }
   ],
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_indexing",
+      "label": "Enable Indexing",
+      "info": "Shows 1-based indeces of accordion rows",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "accordion_index",
+      "default": 0,
+      "label": "Index",
+      "info": "The index of the element",
+      "visible_if": "{{ block.settings.enable_indexing }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_custom_open_close_icon",
+      "label": "Use Custom Open/Close Icon",
+      "info": "It is the parent accordion element's responsibility to style the custom icon.",
+      "default": true
+    },
     {
       "type": "text",
       "id": "heading",
